@@ -1,21 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
-var Story = require('./story.model')
+var controller = require('./story.controller');
 
 //Middle ware that is specific to this router
 router.use(function timeLog(req, res, next) {
   console.log('Time: ', Date.now());
   next();
 });
-
+console.log(controller);
 
 // Define the home page route
-router.get('/stories', function(req, res) {
-  Story.findAll({}, function(err, stories) {
-    res.send(stories);
-  })
-});
+router.get('/stories', controller.allStories);
 
 
 module.exports = router;
