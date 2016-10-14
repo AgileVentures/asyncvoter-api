@@ -1,0 +1,36 @@
+{
+  "name": "async-voter",
+  "version": "0.0.1",
+  "description": "Application used to enable voting on stories in a asynchronous way",
+  "main": "bin/server.js",
+  "scripts": {
+    "test": "mocha",
+    "spec": "mocha -R spec test/*/*.spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AgileVentures/AsyncVoter.git"
+  },
+  "keywords": [
+    "agile",
+    "story",
+    "voting",
+    "asynchronous"
+  ],
+  "author": "AgileVentures",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AgileVentures/AsyncVoter/issues"
+  },
+  "homepage": "https://github.com/AgileVentures/AsyncVoter#readme",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongoose": "^4.6.3"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.1.2",
+    "supertest": "^1.1.0"
+  }
+}
