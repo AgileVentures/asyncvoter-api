@@ -4,8 +4,8 @@
   "description": "Application used to enable voting on stories in a asynchronous way",
   "main": "bin/server.js",
   "scripts": {
-    "test": "mocha",
-    "spec": "mocha -R spec test/*/*.spec.js"
+    "test": "mocha -R spec test/*/*.spec.js",
+    "start": "node bin/server.js"
   },
   "repository": {
     "type": "git",
