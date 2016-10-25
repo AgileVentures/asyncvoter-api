@@ -22,4 +22,17 @@ describe('(Router) Story', function () {
                 done()
             });
     });
+    it('POST /stories', function (done) {
+        chai.request(server)
+            .post('/stories')
+            .field('url', 'https://github.com/AgileVentures/AsyncVoter/issues/4')
+            .field('size', '3')
+            .field('name', 'Start Vote Feature')
+            .end( (err, res) => {
+                res.should.have.status(200);
+                res.body.length.should.be.eql(2);
+                done()
+            });
+    });
+
 })

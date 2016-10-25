@@ -12,6 +12,7 @@ console.log(controller);
 
 // Define the home page route
 router.get('/stories', controller.allStories);
+router.post('/stories', controller.createStory);
 
 
 module.exports = router;

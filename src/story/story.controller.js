@@ -7,3 +7,15 @@ exports.allStories = function (req, res) {
     })
 }
 
+exports.createStory = function (req, res) {
+    var name = req.body.name;
+    var size = req.body.size;
+    var url = req.body.url;
+    // console.log(req)
+    // res.send({name: name, size: size, url: url})
+    Story.create({name: name, size: size, url: url}, function(err, story) {
+        // console.log(req.body)
+        res.send(story);
+    })
+}
+

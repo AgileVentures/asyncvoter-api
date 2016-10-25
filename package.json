@@ -5,7 +5,8 @@
   "main": "bin/server.js",
   "scripts": {
     "test": "mocha -R spec test/*/*.spec.js",
-    "start": "node bin/server.js"
+    "start": "node bin/server.js",
+    "debug": "node debug bin/server.js"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,7 @@
   },
   "homepage": "https://github.com/AgileVentures/AsyncVoter#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "express": "^4.14.0",
     "mongoose": "^4.6.3"
   },
