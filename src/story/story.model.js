@@ -18,9 +18,9 @@ schema.statics.findAll = function(predicate, callback) {
 	]);
 }
 
-schema.statics.create = function(obj, callback) {
-	return callback(null, [obj]);
-}
+// schema.statics.create = function(obj, callback) {
+// 	return callback(null, [obj]);
+// }
 
 var Story = mongoose.model('Story', schema);
 

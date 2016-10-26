@@ -25,12 +25,14 @@ describe('(Router) Story', function () {
     it('POST /stories', function (done) {
         chai.request(server)
             .post('/stories')
-            .field('url', 'https://github.com/AgileVentures/AsyncVoter/issues/4')
-            .field('size', '3')
-            .field('name', 'Start Vote Feature')
+            // .field('url', 'https://github.com/AgileVentures/AsyncVoter/issues/4')
+            // .field('size', '3')
+            // .field('name', 'Start Vote Feature')
+            .send({ url: 'https://github.com/AgileVentures/AsyncVoter/issues/4', size: '3', name: 'Start Vote Feature'})
             .end( (err, res) => {
                 res.should.have.status(200);
-                res.body.length.should.be.eql(1);
+                console.dir("hi!" + JSON.stringify(res.body))
+                res.body.url.should.be.eql('https://github.com/AgileVentures/AsyncVoter/issues/4');
                 done()
             });
     });
