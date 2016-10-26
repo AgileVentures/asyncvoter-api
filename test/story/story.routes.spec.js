@@ -30,7 +30,7 @@ describe('(Router) Story', function () {
             .field('name', 'Start Vote Feature')
             .end( (err, res) => {
                 res.should.have.status(200);
-                res.body.length.should.be.eql(2);
+                res.body.length.should.be.eql(1);
                 done()
             });
     });
