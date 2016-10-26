@@ -5,6 +5,7 @@ var schema = new mongoose.Schema({
 	url: 'string'
 });
 
+/*
 schema.statics.findAll = function(predicate, callback) {
 	return callback({}, [
 		new Story({
@@ -17,6 +18,7 @@ schema.statics.findAll = function(predicate, callback) {
 		})
 	]);
 }
+*/
 
 // schema.statics.create = function(obj, callback) {
 // 	return callback(null, [obj]);

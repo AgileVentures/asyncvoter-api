@@ -4,37 +4,65 @@ let chai = require('chai');
 let chaiHttp = require('chai-http');
 let should = chai.should();
 chai.use(chaiHttp);
-describe('(Router) Story', function () {
-    var server;
+
+var mongoose = require('mongoose');
+
+var DatabaseCleaner = require('database-cleaner');
+var databaseCleaner = new DatabaseCleaner('mongodb');
+
+
+
+describe('(Router) Story', function() {
+
+    var server = require('../../bin/server');
+
     beforeEach(function() {
-        server = require('../../bin/server');
-    });
-    afterEach(function () {
-        server.close();
-    });
-    it('GET /stories', function (done) {
-        chai.request(server)
-            .get('/stories')
-            .end( (err, res) => {
-                res.should.have.status(200);
-                res.body.should.be.a('array');
-                res.body.length.should.be.eql(2);
-                done()
+        databaseCleaner.clean(mongoose.connections[0].db, function() {
+            console.log('Cleaned successfully');
+        });
+
+        var Story = require('../../src/story/story.model');
+        Story.create({
+                url: "http://google.com",
+                size: "1",
+                name: "dummy entry"
+            },
+            function(err, story) {
+                if (err) throw err;
             });
     });
-    it('POST /stories', function (done) {
+
+
+    afterEach(function() {
+        server.close();
+    });
+
+
+    it('POST /stories', function(done) {
         chai.request(server)
             .post('/stories')
-            // .field('url', 'https://github.com/AgileVentures/AsyncVoter/issues/4')
-            // .field('size', '3')
-            // .field('name', 'Start Vote Feature')
-            .send({ url: 'https://github.com/AgileVentures/AsyncVoter/issues/4', size: '3', name: 'Start Vote Feature'})
-            .end( (err, res) => {
+            .send({
+                url: 'https://github.com/AgileVentures/AsyncVoter/issues/4',
+                size: '3',
+                name: 'Start Vote Feature'
+            })
+            .end((err, res) => {
                 res.should.have.status(200);
                 console.dir("hi!" + JSON.stringify(res.body))
                 res.body.url.should.be.eql('https://github.com/AgileVentures/AsyncVoter/issues/4');
                 done()
             });
     });
+    it('GET /stories', function(done) {
+        chai.request(server)
+            .get('/stories')
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('array');
+                res.body.length.should.be.eql(1);
+                done()
+            });
+    });
+
 
 })
