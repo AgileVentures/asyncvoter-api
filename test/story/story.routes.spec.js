@@ -15,6 +15,9 @@ var databaseCleaner = new DatabaseCleaner('mongodb');
 describe('(Router) Story', function() {
 
     var server = require('../../bin/server');
+    before(function(done) {
+        mongoose.connection.on('connected', done);
+    });
 
     beforeEach(function(done) {
         databaseCleaner.clean(mongoose.connections[0].db, function() {
