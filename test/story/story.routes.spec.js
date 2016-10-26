@@ -16,21 +16,21 @@ describe('(Router) Story', function() {
 
     var server = require('../../bin/server');
 
-    beforeEach(function() {
+    beforeEach(function(done) {
         databaseCleaner.clean(mongoose.connections[0].db, function() {
             console.log('Cleaned successfully');
-        });
-
-        var Story = require('../../src/story/story.model');
-        Story.create({
+            var Story = require('../../src/story/story.model');
+            Story.create({
                 url: "http://google.com",
                 size: "1",
                 name: "dummy entry"
             },
             function(err, story) {
                 if (err) throw err;
+                done();
             });
-    });
+        });
+    });    
 
 
     afterEach(function() {
