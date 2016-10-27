@@ -51,7 +51,7 @@ describe('(Router) Story', function() {
             })
             .end((err, res) => {
                 res.should.have.status(200);
-                // console.dir("hi!" + JSON.stringify(res.body))
+                // console.dir("post request response body" + JSON.stringify(res.body))
                 res.body.url.should.be.eql('https://github.com/AgileVentures/AsyncVoter/issues/4');
                 done()
             });
@@ -67,5 +67,26 @@ describe('(Router) Story', function() {
             });
     });
 
-
+    it('GET /stories/:id', function(done) {
+        chai.request(server)
+            .post('/stories')
+            .send({
+                url: 'https://github.com/AgileVentures/AsyncVoter/issues/4',
+                size: '3',
+                name: 'Start Vote Feature'
+            });
+     story.save((err, story) => {
+       chai.request(server)
+         .get('/stories/' + story._id)
+         .end((err, res) => {
+           res.should.have.status(200);
+           res.body.should.be.a('object');
+           res.body.should.have.property('title');
+           res.body.should.have.property('url');
+           res.body.should.have.property('size');
+           res.body.should.have.property('_id').eql(story.id);
+     done();
+       });
+     });
+   });
 })
