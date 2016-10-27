@@ -21,7 +21,7 @@ describe('(Router) Story', function() {
 
     beforeEach(function(done) {
         databaseCleaner.clean(mongoose.connections[0].db, function() {
-            console.log('Cleaned successfully');
+            // console.log('Cleaned successfully');
             var Story = require('../../src/story/story.model');
             Story.create({
                 url: "http://google.com",

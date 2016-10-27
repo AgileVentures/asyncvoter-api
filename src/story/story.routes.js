@@ -8,7 +8,7 @@ router.use(function timeLog(req, res, next) {
   console.log('Time: ', Date.now());
   next();
 });
-console.log(controller);
+// console.log(controller);
 
 // Define the home page route
 router.get('/stories', controller.allStories);
