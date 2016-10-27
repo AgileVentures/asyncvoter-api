@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c6c9a0d7-0e6b-4bf9-bbd0-9f7f7279106f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/story/story.routes.spec.js" afterPath="$PROJECT_DIR$/test/story/story.routes.spec.js" />
-    </list>
+    <list default="true" id="c6c9a0d7-0e6b-4bf9-bbd0-9f7f7279106f" name="Default" comment="" />
     <ignored path="AsyncVoter.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -276,12 +273,12 @@
       <option name="presentableId" value="Default" />
       <updated>1477604081029</updated>
       <workItem from="1477604082344" duration="158000" />
-      <workItem from="1477604615530" duration="3882000" />
+      <workItem from="1477604615530" duration="3940000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4040000" />
+    <option name="totallyTimeSpent" value="4098000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1920" y="24" width="1920" height="1009" extended-state="6" />
