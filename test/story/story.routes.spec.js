@@ -51,7 +51,7 @@ describe('(Router) Story', function() {
             })
             .end((err, res) => {
                 res.should.have.status(200);
-                console.dir("hi!" + JSON.stringify(res.body))
+                // console.dir("hi!" + JSON.stringify(res.body))
                 res.body.url.should.be.eql('https://github.com/AgileVentures/AsyncVoter/issues/4');
                 done()
             });
