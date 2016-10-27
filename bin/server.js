@@ -10,7 +10,7 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 
 app.use(require('../src/story/story.routes.js'));
 
-mongoose.connect('mongodb://localhost/asynchvoter');
+mongoose.connect('mongodb://localhost/asyncvoter');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function () {

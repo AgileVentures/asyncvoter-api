@@ -1,5 +1,4 @@
 "use strict";
-//let Story = require('./story.model'); 
 var Story = require('./story.model'); 
 
 exports.allStories = function (req, res) {
@@ -14,10 +13,10 @@ exports.createStory = function (req, res,next) {
     var url = req.body.url;
     // console.log("Here is the request body: " + JSON.stringify(req.body))
     Story.create({"name": name, "size": size, "url": url}, function(err, story) {
-    if (err) throw err;
-           // console.log('Story created!');
-           var id = story._id;
-           res.send(story);
+        if (err) throw err;
+        // console.log('Story created!');
+        var id = story._id;
+        res.send(story);
     });
 }
 
