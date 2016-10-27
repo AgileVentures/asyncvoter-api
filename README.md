@@ -27,6 +27,8 @@ At this point we have all the dependencies installed and we are ready to start
 
 # Configure the application
 
+Please create the .env file from the .env.sample before running your application.
+
 ... We will need to fill this up with mongo db connection info
 
 # Running the application
