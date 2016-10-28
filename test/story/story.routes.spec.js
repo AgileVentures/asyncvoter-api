@@ -32,7 +32,8 @@ describe('(Router) Story', function () {
                 function (err, story) {
                     if (err) throw err;
                     done();
-                });
+                }
+            );
         });
     });
 
