@@ -7,7 +7,7 @@ exports.allStories = function (req, res) {
     })
 }
 
-exports.createStory = function (req, res,next) {
+exports.createStory = function (req, res, next) {
     var name = req.body.name;
     var size = req.body.size;
     var url = req.body.url;
@@ -19,4 +19,13 @@ exports.createStory = function (req, res,next) {
         res.send(story);
     });
 }
+
+exports.findById = function (req, res) {
+    var id = req.params.id;
+    Story.findOne({'_id':id}, function(err,result) {
+        return res.send(result);
+    });
+}
+
+
 
