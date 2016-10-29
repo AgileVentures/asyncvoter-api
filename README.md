@@ -44,7 +44,7 @@ npm start
 To run all the tests execute
 
 ```
-npm run spec
+npm test
 ```
 
 # Troubleshooting
