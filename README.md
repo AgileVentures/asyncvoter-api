@@ -41,11 +41,18 @@ npm start
 
 # Running tests
 
-To run all the tests execute
+To run all the Chai/Mocha tests execute
 
 ```
 npm test
 ```
+
+To use the new cucumber tests execute:
+
+```
+npm run cucumber
+```
+
 
 # Troubleshooting
 
