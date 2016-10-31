@@ -56,3 +56,9 @@ If you get this error try cleaning the cache using
 ```
 npm cache clean
 ```
+
+# Adding REST routes
+
+Top-level routing is now handled in the `src/routes.js` file. For domain-level sub-routes please use an appropriate routing file in the domain folder.
+
+Please see `src/routes.js` and `src/story/story.routes.js` for examples of how it is done.
