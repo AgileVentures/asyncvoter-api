@@ -31,6 +31,9 @@ Please update the .env file from the .env.sample before running your application
 
 ... We will need to fill this up with mongo db connection info
 
+If you are unsure what this means just: `cp .env.sample .env`
+
+
 # Running the application
 
 After the configuration is done we can start the application using
