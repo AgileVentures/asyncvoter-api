@@ -10,10 +10,15 @@ router.use(function timeLog(req, res, next) {
 });
 // console.log(controller);
 
-// Define the home page route
-router.get('/stories', controller.allStories);
-router.post('/stories', controller.createStory);
-router.get('/stories/:id', controller.findById);
+router.route('/')
+// GET all stories
+.get(controller.allStories)
+// POST a new story
+.post(controller.createStory)
+
+router.route('/:id')
+// GET a specific story
+.get(controller.findById)
 
 
 module.exports = router;
