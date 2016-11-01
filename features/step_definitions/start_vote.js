@@ -2,15 +2,11 @@
 process.env.NODE_ENV = 'test';
 
 // Import required packages
-let mongoose = require("mongoose");
+// let mongoose = require("mongoose");
 let Story = require(process.cwd() + '/src/story/story.model');
 
 // Import required dev-dependencies for testing
-let chai = require('chai');
-let chaiHttp = require('chai-http');
-let server = require(process.cwd() + '/bin/server');
-let expect = chai.expect;
-chai.use(chaiHttp);
+let expect = require('chai').expect;
 
 module.exports = function() {
 
@@ -49,38 +45,10 @@ module.exports = function() {
 
   */
 
-  /*
-  this.Then(/the bot should return an id of that new ballot/, function(done) {
-
-
-    var request = chai.request(server);
-    var get = request.get('/stories');
-    var end = get.end((err, res) => {
-      expect(res.status).to.equal(200);
-      expect(res.body[0]._id).to.equal(id);
-
-    });
-
-  });
-  */
 
 
   this.Given(/^that I submit the URL '([^']+)'$/, function(arg1, callback) {
-
-
-    console.log("arg1: " + arg1)
-
-    // chai.request(server)
-    // var server = this.getServer();
-
-    // var myPost = this.makePost('/stories');
-    // var mySend = this.sendPost({
-    //   url: arg1
-    // });
-
     this.makeAndSendPost('/stories', {url: arg1});
-
-
     callback();
   });
 
@@ -92,33 +60,4 @@ module.exports = function() {
   });
 
 
-  /*
-  this.When(/^I make a GET request to "([^"]*)"$/, function(arg1, callback) {
-    // TODO: we really need to be able to communicate between the WHEN and the THEN
-    // and we don't here - we're just faking it until we make it ATM.
-
-    chai.request(server)
-      .get('/stories')
-      .end((err, res) => {
-        expect(res.status).to.equal(200);
-        statusCode = Number(res.status); // TODO: Does not work!
-      });
-
-
-    callback();
-  });
-
-  this.Then(/^the response status code should be "([^"]*)"$/, function(arg1, callback) {
-    // TODO: Fix this, see WHEN .. GET request above
-    chai.request(server)
-      .get('/stories')
-      .end((err, res) => {
-        expect(res.status).to.equal(Number(arg1));
-      });
-
-
-    callback();
-  });
-
-  */
 };
