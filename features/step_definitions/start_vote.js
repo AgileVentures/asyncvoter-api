@@ -14,10 +14,7 @@ chai.use(chaiHttp);
 
 module.exports = function() {
 
-  var World = function(callback) {
-    //
-
-  }
+  this.World = require('../world').World;
 
 
 
@@ -52,37 +49,50 @@ module.exports = function() {
 
   */
 
+  /*
   this.Then(/the bot should return an id of that new ballot/, function(done) {
 
-    chai.request(server)
-      .get('/stories')
-      .end((err, res) => {
-        expect(res.status).to.equal(200);
-        expect(res.body[0]._id).to.equal(id);
 
-      });
+    var request = chai.request(server);
+    var get = request.get('/stories');
+    var end = get.end((err, res) => {
+      expect(res.status).to.equal(200);
+      expect(res.body[0]._id).to.equal(id);
 
-    done();
+    });
 
   });
+  */
 
 
   this.Given(/^that I submit the URL '([^']+)'$/, function(arg1, callback) {
 
-    chai.request(server)
-      .post('/stories')
-      .send({
-        url: arg1
-      })
-      .end((err, res) => {
-        expect(res.status).to.equal(200);
-        id = res.body._id
-      });
+
+    console.log("arg1: " + arg1)
+
+    // chai.request(server)
+    // var server = this.getServer();
+
+    // var myPost = this.makePost('/stories');
+    // var mySend = this.sendPost({
+    //   url: arg1
+    // });
+
+    this.makeAndSendPost('/stories', {url: arg1});
+
 
     callback();
   });
 
+  this.Then(/the bot should return an id of that new ballot/, function(callback) {
+    this.send.end((err, res) => {
+      expect(res.status).to.equal(200);
+    });
+    callback();
+  });
 
+
+  /*
   this.When(/^I make a GET request to "([^"]*)"$/, function(arg1, callback) {
     // TODO: we really need to be able to communicate between the WHEN and the THEN
     // and we don't here - we're just faking it until we make it ATM.
@@ -110,5 +120,5 @@ module.exports = function() {
     callback();
   });
 
-
+  */
 };
