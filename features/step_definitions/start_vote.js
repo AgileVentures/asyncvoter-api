@@ -37,18 +37,49 @@ module.exports = function() {
   */
 
 
+  // start_vote.feature
 
   this.Given(/^that I submit the URL '([^']+)'$/, function(arg1, callback) {
-    this.makeAndSendPost('/stories', {url: arg1});
+    this.makeAndSendPost('/stories', {
+      url: arg1
+    });
     callback();
   });
 
   this.Then(/the bot should return an id of that new ballot/, function(callback) {
     this.send.end((err, res) => {
+
+      // TODO: do we want to use these assertion types
+
       expect(res.status).to.equal(200);
+      // expect(true).to.equal(false);
+      // TODO: "TRUE does not equal FALSE" - would be a nicer message
+      callback();
+
     });
+  });
+
+  // end of start_vote.feature steps
+
+
+  // test.feature
+  this.When(/^I make a GET request to "([^"]*)"$/, function(arg1, callback) {
+    this.makeGetRequest(arg1);
     callback();
   });
+
+
+  this.Then(/^the response status code should be "([^"]*)"$/, function(arg1, callback) {
+
+    this.get.end((err, res) => {
+      expect(res.status).to.equal(Number(arg1));
+    });
+
+    callback();
+  });
+
+  // end of test.feature
+
 
 
 };
