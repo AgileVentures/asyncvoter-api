@@ -54,7 +54,6 @@ module.exports = function() {
   this.Then(/^the response status code should be "([^"]*)"$/, function(arg1, callback) {
 
     this.get.end((err, res) => {
-      console.log("BODY OUTPUT: ", res.body);
       expect(res.status).to.equal(Number(arg1));
 
       callback();
