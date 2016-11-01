@@ -27,7 +27,7 @@ At this point we have all the dependencies installed and we are ready to start
 
 # Configure the application
 
-Please update the .env file from the .env.sample before running your application.
+Please create a .env file (if you don't have one already) and copy the contents from .env.sample. This is needed before running your application.
 
 ... We will need to fill this up with mongo db connection info
 
@@ -44,7 +44,7 @@ npm start
 To run all the tests execute
 
 ```
-npm run spec
+npm test
 ```
 
 # Troubleshooting
