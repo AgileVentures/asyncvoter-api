@@ -1,29 +1,12 @@
-// During testing, "NODE_ENV" is set to "test"
-process.env.NODE_ENV = 'test';
-
-// Import required packages
-// let mongoose = require("mongoose");
-// let Story = require(process.cwd() + '/src/story/story.model');
-
-// Import required dev-dependencies for testing
 let expect = require('chai').expect;
 
 module.exports = function() {
 
   this.World = require('../support/world').World;
 
-
-
-  // Clean the DB before running tests
-  // TODO: Function should be moved to Hooks file
-  // Story.remove({}, function(err) {
-  //   if (err) {
-  //     throw err;
-  //   }
-  // });
-
-
   /*
+    TODO: Do we interpret the "start_vote.feature" as the first or second of these scenarios
+
 
     GIVEN I send a POST request with a new story
     THEN the response to that request contains an ID of the new Story in the system
@@ -35,7 +18,6 @@ module.exports = function() {
     story in the system
 
   */
-
 
   // start_vote.feature
 

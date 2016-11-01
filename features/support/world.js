@@ -9,7 +9,6 @@ module.exports.World = function(callback) {
   this.send = undefined;
   this.get  = undefined;
 
-
   this.makeAndSendPost = function(route, data) {
     var thePost = chai.request(server).post(route);
     var theSend = thePost.send(data);
@@ -19,6 +18,5 @@ module.exports.World = function(callback) {
   this.makeGetRequest = function(route) {
     this.get = chai.request(server).get(route);
   }
-
 
 }
