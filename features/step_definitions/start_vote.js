@@ -14,6 +14,13 @@ chai.use(chaiHttp);
 
 module.exports = function() {
 
+  var World = function(callback) {
+    //
+
+  }
+
+
+
   // Clean the DB before running tests
   // TODO: Function should be moved to Hooks file
   Story.remove({}, function(err) {
@@ -43,6 +50,19 @@ module.exports = function() {
     done();
 
   });
+
+  /*
+
+    GIVEN I send a POST request with a new story
+    THEN the response to that request contains an ID of the new Story in the system
+
+    ---
+
+    GIVEN I send a POST request with a new story
+    THEN if I check the available stories via a GET request I can see the
+    story in the system
+
+  */
 
   this.Then(/the bot should return an id of that new ballot/, function(done) {
 
