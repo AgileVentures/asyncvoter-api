@@ -22,15 +22,6 @@ module.exports = function() {
     }
   });
 
-  let newStory = {
-    name: "Start ballot",
-    url: "https://github.com/story1.git",
-    size: 1
-  }
-
-  let id;
-  let statusCode;
-
 
   /*
 
