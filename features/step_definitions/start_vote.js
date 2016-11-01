@@ -24,7 +24,7 @@ module.exports = function() {
   // Clean the DB before running tests
   // TODO: Function should be moved to Hooks file
   Story.remove({}, function(err) {
-    if(err) {
+    if (err) {
       throw err;
     }
   });
@@ -36,20 +36,8 @@ module.exports = function() {
   }
 
   let id;
+  let statusCode;
 
-  this.Given(/that I submit a new story to the bot/, function(done) {
-
-    chai.request(server)
-      .post('/stories')
-      .send(newStory)
-      .end((err, res) => {
-        expect(res.status).to.equal(200);
-        id = res.body._id
-    });
-
-    done();
-
-  });
 
   /*
 
@@ -72,9 +60,55 @@ module.exports = function() {
         expect(res.status).to.equal(200);
         expect(res.body[0]._id).to.equal(id);
 
-    });
+      });
 
     done();
 
   });
+
+
+  this.Given(/^that I submit the URL '([^']+)'$/, function(arg1, callback) {
+
+    chai.request(server)
+      .post('/stories')
+      .send({
+        url: arg1
+      })
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        id = res.body._id
+      });
+
+    callback();
+  });
+
+
+  this.When(/^I make a GET request to "([^"]*)"$/, function(arg1, callback) {
+    // TODO: we really need to be able to communicate between the WHEN and the THEN
+    // and we don't here - we're just faking it until we make it ATM.
+
+    chai.request(server)
+      .get('/stories')
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        statusCode = Number(res.status); // TODO: Does not work!
+      });
+
+
+    callback();
+  });
+
+  this.Then(/^the response status code should be "([^"]*)"$/, function(arg1, callback) {
+    // TODO: Fix this, see WHEN .. GET request above
+    chai.request(server)
+      .get('/stories')
+      .end((err, res) => {
+        expect(res.status).to.equal(Number(arg1));
+      });
+
+
+    callback();
+  });
+
+
 };

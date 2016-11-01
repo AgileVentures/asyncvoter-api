@@ -4,7 +4,7 @@
   "description": "Application used to enable voting on stories in a asynchronous way",
   "main": "bin/server.js",
   "scripts": {
-    "test": "cucumberjs",
+    "test": "mocha -R spec test/*/*.spec.js",
     "start": "node bin/server.js",
     "debug": "node debug bin/server.js",
     "cucumber": "./node_modules/.bin/cucumberjs"
