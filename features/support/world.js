@@ -4,10 +4,7 @@ let server = require(process.cwd() + '/bin/server');
 let expect = chai.expect;
 chai.use(chaiHttp);
 
-
 module.exports.World = function(callback) {
-
-  // var post;
 
   this.send = undefined;
   this.get  = undefined;

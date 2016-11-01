@@ -3,24 +3,24 @@ process.env.NODE_ENV = 'test';
 
 // Import required packages
 // let mongoose = require("mongoose");
-let Story = require(process.cwd() + '/src/story/story.model');
+// let Story = require(process.cwd() + '/src/story/story.model');
 
 // Import required dev-dependencies for testing
 let expect = require('chai').expect;
 
 module.exports = function() {
 
-  this.World = require('../world').World;
+  this.World = require('../support/world').World;
 
 
 
   // Clean the DB before running tests
   // TODO: Function should be moved to Hooks file
-  Story.remove({}, function(err) {
-    if (err) {
-      throw err;
-    }
-  });
+  // Story.remove({}, function(err) {
+  //   if (err) {
+  //     throw err;
+  //   }
+  // });
 
 
   /*
@@ -72,10 +72,11 @@ module.exports = function() {
   this.Then(/^the response status code should be "([^"]*)"$/, function(arg1, callback) {
 
     this.get.end((err, res) => {
+      console.log("BODY OUTPUT: ", res.body);
       expect(res.status).to.equal(Number(arg1));
-    });
 
-    callback();
+      callback();
+    });
   });
 
   // end of test.feature
