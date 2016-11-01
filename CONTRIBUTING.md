@@ -1,6 +1,10 @@
+We use [Waffle](https://waffle.io/AgileVentures/AsyncVoter) to manage our work on features, chores and bugfixes. See [Recommended-Workflow-Using-Pull-Requests-&-Automatic-Work-Tracking](https://github.com/waffleio/waffle.io/wiki/Recommended-Workflow-Using-Pull-Requests-&-Automatic-Work-Tracking) for more details on the Waffle workflow.
+
+To start working on a ticket please check that it has been estimated in waffle.  If not please feel free to start a vote on the story in the [async_voter slack channel](https://agileventures.slack.com/messages/async_voter/). See the [instructions for running an asynchronous vote]((https://github.com/AgileVentures/AgileVentures/blob/master/ASYNC_VOTING.md), and feel free to join a hangout scrum in order to vote synchronously if you prefer.  Scrum times on the [AgileVentures About Us](http://www.agileventures.org/about-us) page.  
+
 Our default working branch is `master`.  We do work by creating branches off `master` for new features and bugfixes.  Any feature should include appropriate Cucumber acceptance tests and Mocha unit tests.  We try to avoid view and controller tests, and focus purely on unit tests at the model and service level where possible.  A bugfix may include an acceptance test depending on where the bug occurred, but fixing a bug should start with the creation of a test that replicates the bug, so that any bugfix submission will include an appropriate test as well as the fix itself.
 
-Each developer will usually work on a feature branch in the repo.  Please ask [tansaku](https://github.com/tansaku) or [Joao](https://github.com/joaopapereira) for access to the relevant [GitHub team](https://github.com/orgs/AgileVentures/teams/asyncvoters) so you can push feature branches to the repo. Before starting work on a new feature or bugfix, please ensure you have synced your local master:
+Each developer will usually work on a feature branch in the repo.  Please ask [tansaku](https://github.com/tansaku) or [João](https://github.com/joaopapereira) for access to the relevant [GitHub team](https://github.com/orgs/AgileVentures/teams/asyncvoters) so you can push feature branches to the repo. Before starting work on a new feature or bugfix, please ensure you have synced your local master:
 
 ```
 git pull origin master
@@ -40,13 +44,12 @@ See also [more details on submitting pull requests](how_to_submit_a_pull_request
 Pull Request Review
 -------------------
 
-Currently [tansaku](https://github.com/tansaku) and [Joo](https://github.com/joaopapereira) are pairing on the project management of WebSiteOne.  The project managers will review your pull request as soon as possible.  The project managers can merge unilaterally if necessary, but in general both project managers will need to sign off on a pull request before it is merged.
+Currently [tansaku](https://github.com/tansaku) and [João](https://github.com/joaopapereira) are pairing on the project management of WebSiteOne.  The project managers will review your pull request as soon as possible.  The project managers can merge unilaterally if necessary, but in general both project managers will need to sign off on a pull request before it is merged.
 
 The project managers will review the pull request for coherence with the specified feature or bug fix, and give feedback on code quality, user experience, documentation and git style.  Please respond to comments from the project managers with explanation, or further commits to your pull request in order to get merged in as quickly as possible.
 
-To maximize flexibility add the project managers as collaborators to your WebSiteOne fork in order to allow them to help you fix your pull request, but this is not required.
 
 Code Style
 -------------
 
-We recommend the [Ruby Style Guide](https://github.com/bbatsov/ruby-style-guide)
+We recommend the [JavaScript Style Guide](http://javascript.crockford.com/code.html)
