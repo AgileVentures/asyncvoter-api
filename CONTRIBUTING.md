@@ -62,7 +62,7 @@ When you take on a task, remember to ensure:
 
 * the feature is in the Cucumber features directory (BDD)
 * the feature has scenarios written, and those scenarios have appropriate steps defined (BDD)
-* that before you write a class and/or (public) function ensure you write the chai/mocha test first (TDD)
+* that before you write a class and/or (public) function you write the chai/mocha test first (TDD)
 * you run those tests, even if you make a cosmetic change or just a change to comments
 * to commit
 * to push to the feature branch
