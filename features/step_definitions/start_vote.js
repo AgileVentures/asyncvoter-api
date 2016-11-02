@@ -4,6 +4,7 @@ module.exports = function() {
 
   this.World = require('../support/world').World;
 
+  this.lastResponse = {};
   /*
     TODO: Do we interpret the "start_vote.feature" as the first or second of these scenarios
 
@@ -62,4 +63,25 @@ module.exports = function() {
 
   // end of test.feature
 
+  this.Given(/^the following votes exist:$/, function(votes, callback) {
+    this.createVotes(votes.hashes(), callback);
+  });
+  
+  this.Given(/^I retrieve the stories that are currently being voted$/, function(callback) {
+    this.makeGetRequest('/stories').end((err, res) => {
+      expect(res.status).to.equal(200);
+      this.lastResponse = res.body;
+      callback();
+    });
+  });
+
+  this.Then(/^I should get the story with '([^\)]+)' '([^\)]+)'$/, function(attrName, attrValue, callback) {
+    expect(this.lastResponse[0][attrName]).to.equal(attrValue);
+    callback();
+  });
+
+  this.Then(/^I should get (\d+) stor(?:y|ies)$/, function(numberOfStories, callback) {
+    expect(this.lastResponse.length).to.equal(parseInt(numberOfStories));
+    callback();
+  });
 };
