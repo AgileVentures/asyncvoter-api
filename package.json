@@ -6,7 +6,8 @@
   "scripts": {
     "test": "mocha -R spec test/*/*.spec.js",
     "start": "node bin/server.js",
-    "debug": "node debug bin/server.js"
+    "debug": "node debug bin/server.js",
+    "cucumber": "./node_modules/.bin/cucumberjs"
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
   "devDependencies": {
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
+    "cucumber": "^1.3.1",
     "database-cleaner": "^1.1.0",
     "mocha": "^3.1.2",
     "supertest": "^1.1.0"
