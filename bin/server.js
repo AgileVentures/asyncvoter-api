@@ -10,7 +10,9 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
 
-app.use(require('../src/story/story.routes.js'));
+// Load the routing tables
+require('../src/routes')(app)
+
 
 dotenv.load({ path: '.env' });
 
