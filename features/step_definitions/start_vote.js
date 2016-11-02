@@ -1,6 +1,6 @@
 let expect = require('chai').expect;
 
-module.exports = function() {
+module.exports = function () {
 
   this.World = require('../support/world').World;
 
@@ -21,14 +21,14 @@ module.exports = function() {
 
   // start_vote.feature
 
-  this.Given(/^that I submit the URL '([^']+)'$/, function(url, callback) {
+  this.Given(/^that I submit the URL '([^']+)'$/, function (url, callback) {
     this.makeAndSendPost('/stories', {
       url: url
     });
     callback();
   });
 
-  this.Then(/the bot should return an id of that new ballot/, function(callback) {
+  this.Then(/the bot should return an id of that new ballot/, function (callback) {
     this.send.end((err, res) => {
 
       // TODO: do we want to use these assertion types
@@ -45,13 +45,13 @@ module.exports = function() {
 
 
   // test.feature
-  this.When(/^I make a GET request to "([^"]*)"$/, function(route, callback) {
+  this.When(/^I make a GET request to "([^"]*)"$/, function (route, callback) {
     this.makeGetRequest(route);
     callback();
   });
 
 
-  this.Then(/^the response status code should be "([^"]*)"$/, function(statusCode, callback) {
+  this.Then(/^the response status code should be "([^"]*)"$/, function (statusCode, callback) {
 
     this.get.end((err, res) => {
       expect(res.status).to.equal(Number(statusCode));
