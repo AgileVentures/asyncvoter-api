@@ -60,9 +60,11 @@ We are doing Behaviour-driven development (BDD) and Test-driven development (TDD
 
 When you take on a task, remember to ensure:
 
-A. the feature is in the Cucumber features directory
-B. the feature has scenarios written, and those scenarios have appropriate steps defined
-C. that before you write a class and/or (public) function ensure you write chai/mocha the test first
+A. the feature is in the Cucumber features directory (BDD)
+B. the feature has scenarios written, and those scenarios have appropriate steps defined (BDD)
+C. that before you write a class and/or (public) function ensure you write the chai/mocha test first (TDD)
 D. you run those tests, even if you make a cosmetic change or just a change to comments
-E. commit
-F. push to the feature branch
+E. to commit
+F. to push to the feature branch
+
+If you are unsure of any of this - don't worry - help is at hand. Pairing up helps!
