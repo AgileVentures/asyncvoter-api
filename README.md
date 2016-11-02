@@ -31,6 +31,9 @@ Please create a .env file (if you don't have one already) and copy the contents 
 
 ... We will need to fill this up with mongo db connection info
 
+If you are unsure what this means just: `cp .env.sample .env`
+
+
 # Running the application
 
 After the configuration is done we can start the application using
@@ -41,11 +44,18 @@ npm start
 
 # Running tests
 
-To run all the tests execute
+To run all the Chai/Mocha tests execute
 
 ```
 npm test
 ```
+
+To use the new cucumber tests execute:
+
+```
+npm run cucumber
+```
+
 
 # Troubleshooting
 

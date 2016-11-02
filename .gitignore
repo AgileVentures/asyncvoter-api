@@ -1,5 +1,7 @@
 node_modules/*
 data/*
 .idea/*
-.env
 *.swp
+.env
+npm-debug.log
+
