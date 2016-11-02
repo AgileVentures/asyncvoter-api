@@ -1,6 +1,6 @@
 We use [Waffle](https://waffle.io/AgileVentures/AsyncVoter) to manage our work on features, chores and bugfixes. See the [Recommended-Workflow-Using-Pull-Requests-&-Automatic-Work-Tracking](https://github.com/waffleio/waffle.io/wiki/Recommended-Workflow-Using-Pull-Requests-&-Automatic-Work-Tracking) for more details on the Waffle workflow.
 
-To start working on a ticket please check that it has been estimated in waffle.  If not please feel free to start a vote on the story in the [async_voter slack channel](https://agileventures.slack.com/messages/async_voter/). See the [instructions for running an asynchronous vote](https://github.com/AgileVentures/AgileVentures/blob/master/ASYNC_VOTING.md), and feel free to join a hangout scrum in order to vote synchronously if you prefer.  Scrum times on the [AgileVentures About Us](http://www.agileventures.org/about-us) page.  
+To start working on a ticket please check that it has been estimated in waffle.  If not please feel free to start a vote on the story in the [async_voter slack channel](https://agileventures.slack.com/messages/async_voter/). See the [instructions for running an asynchronous vote](https://github.com/AgileVentures/AgileVentures/blob/master/ASYNC_VOTING.md), and feel free to join a hangout scrum in order to vote synchronously if you prefer.  Scrum times on the [AgileVentures About Us](http://www.agileventures.org/about-us) page.
 
 Once a ticket has been estimated, feel free to add yourself to the list of assignees.  If there are existing assignees we strongly recommend reaching out to them to see how their work is going.  If you are working on a ticket please regularly push your code to the relevant feature branch on the repo.  More details below.
 
@@ -51,7 +51,18 @@ Currently [tansaku](https://github.com/tansaku) and [João](https://github.com/j
 The project managers will review the pull request for coherence with the specified feature or bug fix, and give feedback on code quality, user experience, documentation and git style.  Please respond to comments from the project managers with explanation, or further commits to your pull request in order to get merged in as quickly as possible.
 
 
-Code Style
--------------
+Code Style, Testing and Cycle
+-----------------------------
 
 We recommend the [JavaScript Style Guide](http://javascript.crockford.com/code.html)
+
+We are doing Behaviour-driven development (BDD) and Test-driven development (TDD). We use Cucumber/Chai for BDD and Chai/Mocha for Unit testing.
+
+When you take on a task, remember to ensure:
+
+A. the feature is in the Cucumber features directory
+B. the feature has scenarios written, and those scenarios have appropriate steps defined
+C. that before you write a class and/or (public) function ensure you write chai/mocha the test first
+D. you run those tests, even if you make a cosmetic change or just a change to comments
+E. commit
+F. push to the feature branch
