@@ -21,9 +21,9 @@ module.exports = function() {
 
   // start_vote.feature
 
-  this.Given(/^that I submit the URL '([^']+)'$/, function(arg1, callback) {
+  this.Given(/^that I submit the URL '([^']+)'$/, function(url, callback) {
     this.makeAndSendPost('/stories', {
-      url: arg1
+      url: url
     });
     callback();
   });
@@ -45,23 +45,21 @@ module.exports = function() {
 
 
   // test.feature
-  this.When(/^I make a GET request to "([^"]*)"$/, function(arg1, callback) {
-    this.makeGetRequest(arg1);
+  this.When(/^I make a GET request to "([^"]*)"$/, function(route, callback) {
+    this.makeGetRequest(route);
     callback();
   });
 
 
-  this.Then(/^the response status code should be "([^"]*)"$/, function(arg1, callback) {
+  this.Then(/^the response status code should be "([^"]*)"$/, function(statusCode, callback) {
 
     this.get.end((err, res) => {
-      expect(res.status).to.equal(Number(arg1));
+      expect(res.status).to.equal(Number(statusCode));
 
       callback();
     });
   });
 
   // end of test.feature
-
-
 
 };
