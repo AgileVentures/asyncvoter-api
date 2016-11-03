@@ -6,20 +6,14 @@ let should = chai.should();
 chai.use(chaiHttp);
 
 var mongoose = require('mongoose');
-var Story = require('../../src/story/story.model');
+var Story = require(process.cwd() + '/src/story/story.model');
 
 var DatabaseCleaner = require('database-cleaner');
 var databaseCleaner = new DatabaseCleaner('mongodb');
 
+var server = require('../helper');
 
 describe('(Router) Story', function () {
-
-    var server = require('../../bin/server');
-
-    before(function (done) {
-        mongoose.connection.on('connected', done);
-    });
-
     beforeEach(function (done) {
         databaseCleaner.clean(mongoose.connections[0].db, function () {
             // console.log('Cleaned successfully');
@@ -36,11 +30,6 @@ describe('(Router) Story', function () {
             );
         });
     });
-
-    afterEach(function () {
-        server.close();
-    });
-
 
     it('POST /stories', function (done) {
         chai.request(server)
