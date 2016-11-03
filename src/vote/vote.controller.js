@@ -1,15 +1,17 @@
 // vote.controller.js
 // vote controller
 
-var votes = require('./vote.model');
+var Vote = require('./vote.model');
 
 // Casts a vote
 exports.castVote = function (issue, developer, vote, callback) {
-  var theVote = {
+
+  Vote.create({
     issue: issue,
     developer: developer,
     vote: vote
-  };
-  var err;
-  callback(err, theVote);
-}
+  }, function (err, theVote) {
+    callback(err, theVote);
+  });
+
+};

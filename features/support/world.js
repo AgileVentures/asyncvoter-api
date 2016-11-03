@@ -19,15 +19,15 @@ module.exports.World = function (callback) {
   }
 
   // Used in cast_vote.steps.js
-  this.url = undefined;
+  this.issue = undefined;
   this.developer = undefined;
-  this.option = undefined;
+  this.vote = undefined;
   this.notes = undefined;
   this.getVoteResponse = function (myCallback) {
     var data = {
-      url: this.url,
+      issue: this.issue,
       developer: this.developer,
-      option: this.option
+      vote: this.vote
     };
 
     this.makeAndSendPost('/votes', data);

@@ -12,7 +12,7 @@ var voteSchema = new mongoose.Schema({
     required: true
   },
   vote: {
-    type: Number,
+    type: String,
     required: true
   }
 });
