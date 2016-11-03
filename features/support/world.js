@@ -28,4 +28,20 @@ module.exports.World = function(callback) {
         }
     );
   }
+  this.strToIndex = function(str) {
+    switch(str) {
+      case 'first':
+        return 0;
+      case 'second':
+        return 1;
+      case 'third':
+        return 2;
+      case 'fourth':
+        return 3;
+      case 'fifth':
+        return 4;
+      default:
+        return str;
+    }
+  }
 }

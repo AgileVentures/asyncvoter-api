@@ -12,15 +12,18 @@ Feature: List all Ongoing Votes
   Scenario: Retrieve one active story
     Given I retrieve the stories that are currently being voted
     Then I should get 1 story
-    And I should get the story with 'name' 'vote 1'
-    And I should get the story with 'size' '0'
-    And I should get the story with 'url' 'https://github.com/AgileVentures/AsyncVoter/issues/4'
+    And I should get the first story with 'name' 'vote 1'
+    And I should get the first story with 'size' '0'
+    And I should get the first story with 'url' 'https://github.com/AgileVentures/AsyncVoter/issues/4'
   Scenario: Retrieve two active story
     Given the following votes exist:
       | name   | size | url                                                  |
       | vote 5 |    0 | https://github.com/AgileVentures/AsyncVoter/issues/8 |
     Then I retrieve the stories that are currently being voted
     And I should get 2 stories
-    And I should get the story with 'name' 'vote 1'
-    And I should get the story with 'size' '0'
-    And I should get the story with 'url' 'https://github.com/AgileVentures/AsyncVoter/issues/4'
+    And I should get the first story with 'name' 'vote 1'
+    And I should get the first story with 'size' '0'
+    And I should get the first story with 'url' 'https://github.com/AgileVentures/AsyncVoter/issues/4'
+    And I should get the second story with 'name' 'vote 5'
+    And I should get the second story with 'size' '0'
+    And I should get the second story with 'url' 'https://github.com/AgileVentures/AsyncVoter/issues/8'
