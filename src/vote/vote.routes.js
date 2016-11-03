@@ -12,8 +12,9 @@ voteRouter.route('/')
     var issue = req.body.issue;
     var developer = req.body.developer;
     var vote = req.body.vote;
+    var notes = req.body.notes;
 
-    voteController.castVote(issue, developer, vote, function (err, theVote) {
+    voteController.castVote(issue, developer, vote, notes, function (err, theVote) {
       // TODO: Error handling code
       if (err) return next(err);
 

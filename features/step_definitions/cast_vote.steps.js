@@ -20,21 +20,22 @@ module.exports = function () {
 
   this.When(/^I select a (\d+)$/, function (vote, callback) {
     this.vote = vote;
+    callback();
 
+  });
+
+  this.Then(/^I should get a response back$/, function (callback) {
     var $this = this;
 
     this.getVoteResponse(function (err, res) {
       if (err) return callback(err);
       $this.response = res;
+
+      assert(res.status == 200, "response from server was bad - " + res.status);
       callback();
     });
 
-  });
 
-  this.Then(/^I should get a response back$/, function (callback) {
-    var status = this.response.status;
-    assert(status == 200, "response from server was bad - " + status);
-    callback();
   });
 
   this.Then(/^the response should include the issue being voted on$/, function (callback) {
