@@ -26,7 +26,7 @@ describe('(Router) Story', function () {
             var Story = require('../../src/story/story.model');
             Story.create({
                     url: "http://google.com",
-                    size: "1",
+                    size: "0",
                     name: "dummy entry"
                 },
                 function (err, story) {
