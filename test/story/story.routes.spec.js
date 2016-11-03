@@ -2,14 +2,12 @@ var mongoose = require('mongoose');
 var Story = require(process.cwd() + '/src/story/story.model');
 
 var helperFile = require('../helper');
-let server = helperFile.server;
 let request = helperFile.request;
 let cleanDatabase = helperFile.cleanDatabase;
 
 describe('(Router) Story', function () {
   beforeEach(function (done) {
     cleanDatabase(function () {
-      var Story = require('../../src/story/story.model');
       Story.create({
           url: "http://google.com",
           size: "1",
