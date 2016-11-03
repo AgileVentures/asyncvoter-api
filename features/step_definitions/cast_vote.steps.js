@@ -3,8 +3,6 @@
 //
 // Tests for user casting a vote
 
-
-
 let expect = require('chai').expect;
 
 module.exports = function () {
