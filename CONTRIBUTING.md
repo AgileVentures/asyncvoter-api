@@ -56,15 +56,17 @@ Code Style, Testing and Cycle
 
 We recommend the [JavaScript Style Guide](http://javascript.crockford.com/code.html)
 
-We are doing Behaviour-driven development (BDD) and Test-driven development (TDD). We use Cucumber/Chai for BDD and Chai/Mocha for Unit testing.
+We are doing Behaviour-driven design (BDD) and Test-driven development (TDD). We use Cucumber/Chai for Acceptance testing and Chai/Mocha for Unit testing.
 
 When you take on a task, remember to ensure:
 
-* the feature is in the Cucumber features directory (BDD)
-* the feature has scenarios written, and those scenarios have appropriate steps defined (BDD)
-* that before you write a class and/or (public) function you write the chai/mocha test first (TDD)
+* the feature is in the Cucumber features directory (Acceptance test)
+* the feature has scenarios written, and those scenarios have appropriate steps defined (Acceptance test)
+* that before you write a class and/or (public) function you write the chai/mocha test first (Unit test)
 * you run those tests, even if you make a cosmetic change or just a change to comments
 * to commit
 * to push to the feature branch
+
+For both Cucumber and Mocha we ideally write the tests first (TDD) and we are doing BDD in both since we are always specifying the external behaviour of the system or unit, rather than reaching in and manipulating state.  You can spike pure code, but that should then be thrown away, or be broken to check that tests do actually fail.
 
 If you are unsure of any of this - don't worry - help is at hand. Pairing up helps!
