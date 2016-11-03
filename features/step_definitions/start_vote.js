@@ -76,10 +76,10 @@ module.exports = function() {
   });
 
   this.Then(/^I should get the (first|second|third|fourth) story with '([^\)]+)' '([^\)]+)'$/, 
-    function(index, attrName, attrValue, callback) {
-      let idx = this.strToIndex(index);
-      expect(this.lastResponse[idx][attrName]).to.equal(attrValue);
-      callback();
+      function(index, attrName, attrValue, callback) {
+    let idx = this.strToIndex(index);
+    expect(this.lastResponse[idx][attrName]).to.equal(attrValue);
+    callback();
   });
 
   this.Then(/^I should get (\d+) stor(?:y|ies)$/, function(numberOfStories, callback) {
