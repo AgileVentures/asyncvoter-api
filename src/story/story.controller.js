@@ -2,8 +2,7 @@
 var Story = require('./story.model'); 
 
 exports.allStories = function (req, res) {
-    Story.find({size: 0}).sort('name').exec(function(err, stories) {
-        console.log(stories);
+    Story.findAllActive(function(err, stories) {
         res.send(stories);
     })
 }
