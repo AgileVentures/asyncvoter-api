@@ -18,15 +18,15 @@ And the response should include the issue being voted on
 And that 5 was selected
 
 
-# Scenario: Casting a 5 with notes
-# Given I cast a vote on "https://github.com/AgileVentures/AsyncVoter/issues/7"
-# And I am identified by "Raphael Krausz"
-# When I select a 5
-# And I give the following notes "Hammock sartorial craft beer, fap helvetica williamsburg live-edge selfies DIY. Deep v vegan stumptown, food truck chillwave lomo raw denim 3 wolf moon you probably haven't heard of them street art woke. You probably haven't heard of them fap 90's enamel pin, ennui cronut prism. Kombucha selfies try-hard, vexillologist sustainable photo booth occupy freegan humblebrag succulents. Chillwave pork belly chia, cornhole paleo distillery coloring book portland godard forage. Viral lomo flannel chicharrones, franzen single-origin coffee man bun polaroid keytar occupy neutra. Pork belly messenger bag vexillologist, fingerstache vice cray prism."
-# Then I should get a response back
-# And the response should include the same notes back
-# And the response should include the issue being voted on
-# And that 5 was selected
+Scenario: Casting a 5 with notes
+Given I cast a vote on "https://github.com/AgileVentures/AsyncVoter/issues/7"
+And I am identified by "Raphael Krausz"
+When I select a 5
+And I give the following notes "Hammock sartorial craft beer, fap helvetica williamsburg live-edge selfies DIY. Deep v vegan stumptown, food truck chillwave lomo raw denim 3 wolf moon you probably haven't heard of them street art woke. You probably haven't heard of them fap 90's enamel pin, ennui cronut prism. Kombucha selfies try-hard, vexillologist sustainable photo booth occupy freegan humblebrag succulents. Chillwave pork belly chia, cornhole paleo distillery coloring book portland godard forage. Viral lomo flannel chicharrones, franzen single-origin coffee man bun polaroid keytar occupy neutra. Pork belly messenger bag vexillologist, fingerstache vice cray prism."
+Then I should get a response back
+And the response should include the same notes back
+And the response should include the issue being voted on
+And that 5 was selected
 #
 #
 # Scenario: Casting a 3

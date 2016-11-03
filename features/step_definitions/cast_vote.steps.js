@@ -50,5 +50,18 @@ module.exports = function () {
     callback();
   });
 
+  this.When(/^I give the following notes "([^"]*)"$/, function (notes, callback) {
+    this.notes = notes;
+    callback();
+  });
+
+
+  this.Then(/^the response should include the same notes back$/, function (callback) {
+    assert(this.notes == this.response.body.notes,
+      "Notes given were not the same as those received back");
+
+    callback();
+  });
+
 
 }

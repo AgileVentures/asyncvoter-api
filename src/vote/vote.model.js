@@ -14,7 +14,8 @@ var voteSchema = new mongoose.Schema({
   vote: {
     type: String,
     required: true
-  }
+  },
+  notes: String
 });
 
 var Vote = mongoose.model('Vote', voteSchema);
