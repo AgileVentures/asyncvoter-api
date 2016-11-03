@@ -23,6 +23,7 @@ module.exports.World = function (callback) {
   this.developer = undefined;
   this.vote = undefined;
   this.notes = undefined;
+  this.response = undefined;
   this.getVoteResponse = function (myCallback) {
     var data = {
       issue: this.issue,
