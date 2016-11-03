@@ -19,7 +19,10 @@ describe('Casting a vote', function () {
 
   before(function (done) {
     console.log("In before(...)");
-    mongoose.connection.on('connected', done);
+    mongoose.connection.on('connected', function () {
+      console.log("**** HERE I AM *****"); // Never reached!
+      done();
+    });
   });
 
   beforeEach(function (callback) {
