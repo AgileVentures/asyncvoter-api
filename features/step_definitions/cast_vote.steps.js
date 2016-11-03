@@ -21,21 +21,14 @@ module.exports = function () {
   this.When(/^I select a (\d+)$/, function (vote, callback) {
     this.vote = vote;
     callback();
-
   });
 
   this.Then(/^I should get a response back$/, function (callback) {
-    var $this = this;
-
     this.getVoteResponse(function (err, res) {
       if (err) return callback(err);
-      $this.response = res;
-
       assert(res.status == 200, "response from server was bad - " + res.status);
       callback();
     });
-
-
   });
 
   this.Then(/^the response should include the issue being voted on$/, function (callback) {
@@ -60,9 +53,29 @@ module.exports = function () {
   this.Then(/^the response should include the same notes back$/, function (callback) {
     assert(this.notes == this.response.body.notes,
       "Notes given were not the same as those received back");
-
     callback();
   });
 
+  this.When(/^I forget to specify the vote$/, function (callback) {
+    this.notes = null;
+    callback();
+  });
+
+  this.Then(/^I should get an error back$/, function (callback) {
+    this.getVoteResponse(function (err, res) {
+      assert.isOk(err, "Error expected but not received");
+      callback();
+    });
+  });
+
+  this.Given(/^I cast a vote but forget to specify the issue$/, function (callback) {
+    this.issue = null;
+    callback();
+  });
+
+  this.Given(/^I forget to give my identifier$/, function (callback) {
+    this.developer = null;
+    callback();
+  });
 
 }

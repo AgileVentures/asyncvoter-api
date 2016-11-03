@@ -25,21 +25,20 @@ module.exports.World = function (callback) {
   this.notes = undefined;
   this.response = undefined;
   this.notes = undefined;
+  var $this = this;
+
   this.getVoteResponse = function (myCallback) {
     var data = {
       issue: this.issue,
       developer: this.developer,
       vote: this.vote
     };
-
     if (this.notes) data.notes = this.notes;
-
     this.makeAndSendPost('/votes', data);
     this.send.end(function (err, res) {
+      $this.response = res;
       myCallback(err, res);
     });
-
   }
-
 
 }

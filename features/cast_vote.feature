@@ -50,21 +50,21 @@ And that 3 was selected
 And the response should include the same notes back
 
 
-# Scenario: Forgetting to specify vote option
-# Given I cast a vote on "https://github.com/AgileVentures/AsyncVoter/issues/7"
-# And I am identified by "Raphael Krausz"
-# When I forget to specify the vote
-# Then I should get an error back
-#
-# Scenario: Forgetting to specify issue to vote on
-# Given I cast a vote but forget to specify the issue
-# And I am identified by "Raphael Krausz"
-# And I select a 1
-# Then I should get an error back
-#
-# Scenario: Forgetting to identify myself
-# Given I cast a vote but forget to specify the issue
-# And I forget to give my identifier
-# And I select a 2
-# Then I should get an error back
-#
+Scenario: Forgetting to specify vote option
+Given I cast a vote on "https://github.com/AgileVentures/AsyncVoter/issues/7"
+And I am identified by "Raphael Krausz"
+When I forget to specify the vote
+Then I should get an error back
+
+Scenario: Forgetting to specify issue to vote on
+Given I cast a vote but forget to specify the issue
+And I am identified by "Raphael Krausz"
+And I select a 1
+Then I should get an error back
+
+Scenario: Forgetting to identify myself
+Given I cast a vote but forget to specify the issue
+And I forget to give my identifier
+And I select a 2
+Then I should get an error back
+

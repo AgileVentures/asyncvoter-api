@@ -14,9 +14,29 @@ voteRouter.route('/')
     var vote = req.body.vote;
     var notes = req.body.notes;
 
+
+    if (!issue) {
+      var err = new Error("issue missing");
+      err.status = 412;
+      return next(err);
+    }
+
+    if (!developer) {
+      var err = new Error("developer missing");
+      err.status = 412;
+      return next(err);
+    }
+
+    if (!vote) {
+      var err = new Error("vote missing");
+      err.status = 412;
+      return next(err);
+    }
+
     voteController.castVote(issue, developer, vote, notes, function (err, theVote) {
       // TODO: Error handling code
-      if (err) return next(err);
+      if (err)
+        return next(err);
 
       res.send(theVote);
     });
