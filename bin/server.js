@@ -13,8 +13,12 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 // Load the routing tables
 require('../src/routes')(app)
 
+let configFile = '.env';
+if(process.env.NODE_ENV == "test") {
+  configFile = '.env.test'
+}
 
-dotenv.load({ path: '.env' });
+dotenv.load({ path: configFile });
 
 mongoose.connect(process.env.MONGODB);
 var db = mongoose.connection;

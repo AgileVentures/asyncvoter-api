@@ -4,10 +4,10 @@
   "description": "Application used to enable voting on stories in a asynchronous way",
   "main": "bin/server.js",
   "scripts": {
-    "test": "mocha -R spec test/*/*.spec.js",
+    "test": "export NODE_ENV=test|| set NODE_ENV=test&& mocha -R spec test/*/*.spec.js",
     "start": "node bin/server.js",
     "debug": "node debug bin/server.js",
-    "cucumber": "./node_modules/.bin/cucumberjs"
+    "cucumber": "env NODE_ENV=test ./node_modules/.bin/cucumberjs"
   },
   "repository": {
     "type": "git",
