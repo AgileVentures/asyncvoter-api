@@ -12,6 +12,7 @@ For Voting on Stories and Tickets remotely and asynchronously e.g. planning poke
 
 # Install
 In order to install this application you need first to ensure that you have NPM installed
+With Node.JS version 6.8 or higher
 
 To install the application get the code
 ```
@@ -65,6 +66,20 @@ If you get this error try cleaning the cache using
 
 ```
 npm cache clean
+```
+
+## ES6 Support
+
+If you are experiencing errors like:
+
+```
+Block-scoped declarations (let, const, function, class) not yet supported outside strict mode
+```
+
+Make sure that the version of node is >= 6.8
+
+```
+node -v
 ```
 
 # Adding REST routes
