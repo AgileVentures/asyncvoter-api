@@ -3,13 +3,13 @@
 //
 // Tests for user casting a vote
 
-let expect = require('chai').expect;
+var assert = require('chai').assert;
 
 module.exports = function () {
   this.World = require('../support/world').World;
 
-  this.Given(/^I cast a vote on "([^"]*)"$/, function (url, callback) {
-    this.url = url;
+  this.Given(/^I cast a vote on "([^"]*)"$/, function (issue, callback) {
+    this.issue = issue;
     callback();
   });
 
@@ -18,16 +18,15 @@ module.exports = function () {
     callback();
   });
 
-  this.When(/^I select a (\d+)$/, function (option, callback) {
-    this.option = option;
+  this.When(/^I select a (\d+)$/, function (vote, callback) {
+    this.vote = vote;
     callback();
-
   });
 
   this.Then(/^I should get a response back$/, function (callback) {
     this.getVoteResponse(function (err, res) {
       if (err) return callback(err);
-      expect(res.status).to.be(200);
+      assert(res.status == 200, "response from server was bad - " + res.status);
       callback();
     });
   });
