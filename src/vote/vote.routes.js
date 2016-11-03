@@ -7,6 +7,11 @@ var voteController = require('./vote.controller');
 
 voteRouter.route('/')
   // POST a new vote cast
-  .post(voteController.castVote)
+  .post(function (req, res, next) {
+    // var
+    // voteController.castVote
+    next();
+  });
+
 
 module.exports = voteRouter;
