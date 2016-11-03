@@ -1,21 +1,14 @@
-"use strict";
-var request = require('supertest');
-let chai = require('chai');
-let chaiHttp = require('chai-http');
-let should = chai.should();
-chai.use(chaiHttp);
-
 var mongoose = require('mongoose');
 var Story = require(process.cwd() + '/src/story/story.model');
 
-var DatabaseCleaner = require('database-cleaner');
-var databaseCleaner = new DatabaseCleaner('mongodb');
-
-var server = require('../helper');
+var helperFile = require('../helper');
+let server = helperFile.server;
+let request = helperFile.request;
+let cleanDatabase = helperFile.cleanDatabase;
 
 describe('(Router) Story', function () {
     beforeEach(function (done) {
-        databaseCleaner.clean(mongoose.connections[0].db, function () {
+        cleanDatabase(function () {
             // console.log('Cleaned successfully');
             var Story = require('../../src/story/story.model');
             Story.create({
@@ -32,7 +25,7 @@ describe('(Router) Story', function () {
     });
 
     it('POST /stories', function (done) {
-        chai.request(server)
+        request()
             .post('/stories')
             .send({
                 url: 'https://github.com/AgileVentures/AsyncVoter/issues/4',
@@ -48,7 +41,7 @@ describe('(Router) Story', function () {
     });
 
     it('GET /stories', function (done) {
-        chai.request(server)
+        request()
             .get('/stories')
             .end(function (err, res) {
                 res.should.have.status(200);
@@ -65,7 +58,7 @@ describe('(Router) Story', function () {
             name: 'Receive Vote Feature'
         });
         newStory.save(function (err, data) {
-            chai.request(server)
+            request()
                 .get('/stories/' + data._id)
                 .end(function (err, res) {
                     res.should.have.status(200);
