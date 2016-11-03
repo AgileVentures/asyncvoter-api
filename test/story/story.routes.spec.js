@@ -31,9 +31,8 @@ describe('(Router) Story', function () {
       })
       .end(function (err, res) {
         res.should.have.status(200);
-        res.body.url.should.be.eql('https: //github.com/AgileVentures/AsyncVoter/issues/4');
-done()
-
+        res.body.url.should.be.eql('https://github.com/AgileVentures/AsyncVoter/issues/4');
+        done()
       });
   });
 
