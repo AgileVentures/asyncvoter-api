@@ -23,26 +23,16 @@ module.exports.World = function (callback) {
   this.developer = undefined;
   this.option = undefined;
   this.notes = undefined;
-
-  // Used in cast_vote.steps.js
-  this.response = undefined;
   this.getVoteResponse = function (myCallback) {
-
     var data = {
       url: this.url,
-      developer: this.developer
+      developer: this.developer,
+      option: this.option
     };
 
-    if (this.option) data.vote = this.option;
-
-
     this.makeAndSendPost('/votes', data);
-    this.send.end((err, res) => {
-      console.log("************************ HERE");
-      console.log('==============response:', res);
-      if (err) throw err;
-      this.response = res;
-      myCallback(res);
+    this.send.end(function (err, res) {
+      myCallback(err, res);
     });
 
   }
