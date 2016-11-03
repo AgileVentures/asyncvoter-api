@@ -20,36 +20,32 @@ module.exports.World = function (callback) {
 
   // Used in cast_vote.steps.js
   this.url = undefined;
-  this.setUrl = function (url) {
-    this.url = url
-}
-
-  // Used in cast_vote.steps.js
+  this.developer = undefined;
   this.option = undefined;
-  // this.setOption = function(option) {
-  //   this.option = option
-  // }
-
-  // Used in cast_vote.steps.js
   this.notes = undefined;
-  // this.setNotes = 
 
   // Used in cast_vote.steps.js
-  this.request = undefined;
-  this.getRequest = function () {
-    if (this.request) return;
+  this.response = undefined;
+  this.getVoteResponse = function (myCallback) {
 
     var data = {
       url: this.url,
-      vote: this.option
+      developer: this.developer
     };
 
+    if (this.option) data.vote = this.option;
+
+
     this.makeAndSendPost('/votes', data);
+    this.send.end((err, res) => {
+      console.log("************************ HERE");
+      console.log('==============response:', res);
+      if (err) throw err;
+      this.response = res;
+      myCallback(res);
+    });
 
-    // TODO: Hmmmm..... Do I need the two variables?
-    this.request = this.send
-
-  };
+  }
 
 
 }

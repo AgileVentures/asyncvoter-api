@@ -1,6 +1,6 @@
 ////////////////////////////////////
 // cast_vote.js
-// 
+//
 // Tests for user casting a vote
 
 
@@ -8,31 +8,30 @@
 let expect = require('chai').expect;
 
 module.exports = function () {
-
   this.World = require('../support/world').World;
 
   this.Given(/^I cast a vote on "([^"]*)"$/, function (url, callback) {
-    this.setUrl(url);
+    this.url = url;
     callback();
   });
+
+  this.Given(/^I am identified by "([^"]*)"/, function (developer, callback)) {
+    this.developer = developer;
+    callback();
+  }
 
   this.When(/^I select a (\d+)$/, function (option, callback) {
     this.option = option;
     callback();
+
   });
 
-  this.When(/^I give the following notes "([^"]*)"$/, function (notes, callback) {
-    this.notes = notes;
-    callback();
-  });
+  this.Then(/^I should get a response back$/),
+    function (callback) {
+      this.getVoteResponse(function (res) {
+        expect(res.status).to.be(200);
+        callback();
+      });
+    });
 
-
-  this.Then(/^the response should include the issue url being voted on$/, function (callback) {
-    this.getRequest();
-    expect(this.response.url).to.equal(this.url);
-    callback();
-  });
-
-
-
-};
+}
