@@ -1,7 +1,7 @@
 Getting Started
 ---------------
 
-Ensure that you have the very latest code running, with all the tests passing, as described in the [README](../README.md).
+Ensure that you have the very latest code running, with all the tests passing, as described in the [README](../README.md).  Manually test the REST end points. You may need something like the [PostMan Chrome extension](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en).
 
 Please read the high level vision as described in this [blog post](http://nonprofits.agileventures.org/2016/09/28/fallow-day/), and check out some of these resources on participating in an Agile Project
 
