@@ -82,7 +82,6 @@ module.exports = function () {
   });
 
   this.Given(/^forget to specify the issue$/, function (callback) {
-    console.log('++===+++++===  HERE')
     this.storyId = null;
     callback();
   });
