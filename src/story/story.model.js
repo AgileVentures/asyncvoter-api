@@ -12,7 +12,6 @@ schema.statics.findAllActive = function(cb) {
   return this.model('Story').find({size: 0}).sort('name').exec(cb);
 };
 schema.statics.findBy = function(filter, sort, callback) {
-	console.log("test: " + filter + " - " + sort);
 	sortArray = [];
 	if(sort !== undefined) {
 		sort.split(',').forEach((sortOrder) => {
@@ -24,14 +23,12 @@ schema.statics.findBy = function(filter, sort, callback) {
 			}
 		});
 	}
-	console.log("miffle")
 	let filterObject = {};
 	for(let key in filter) {
 			if(key === 'state') {
 				filterObject['size'] = 0;
 			}
 	}
-	console.log("out");
 	return this.model('Story').find(filterObject).sort('name').exec(callback);
 }
 

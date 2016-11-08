@@ -2,15 +2,10 @@
 var Story = require('./story.model'); 
 
 exports.allStories = function (req, res) {
-    console.log("test1");
-    let sortParam = req.params["sort"];
-    console.log("test2");
-    let filterParams = req.params;
-    console.log("test3");
+    let sortParam = req.query["sort"];
+    let filterParams = req.query;
     delete filterParams["sort"];
-    console.log(filterParams);
     Story.findBy(filterParams, sortParam, function(err, stories) {
-        console.log("pirror" + err);
         res.send(stories);
     })
 }

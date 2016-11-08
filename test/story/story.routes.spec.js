@@ -67,8 +67,8 @@ describe('(Router) Story', function () {
         .end(function (err, res) {
           res.should.have.status(200);
           res.body.should.be.a('array');
-          res.body.length.should.be.eql(1);
-          expect(res.body[0].name).to.be.eq("test1");
+          res.body.length.should.be.eq(1);
+          expect(res.body[0].name).to.be.eq("test");
           done()
         });
     });
