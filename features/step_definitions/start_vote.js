@@ -68,7 +68,7 @@ module.exports = function() {
   });
   
   this.Given(/^I retrieve the stories that are currently being voted$/, function(callback) {
-    this.makeGetRequest('/stories').end((err, res) => {
+    this.makeGetRequest('/stories?state=active').end((err, res) => {
       expect(res.status).to.equal(200);
       this.lastResponse = res.body;
       callback();
