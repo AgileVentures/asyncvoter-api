@@ -5,7 +5,6 @@ var Vote = require('./vote.model');
 
 // Casts a vote
 exports.castVote = function (issue, developer, vote, notes, callback) {
-
   Vote.create({
     issue: issue,
     developer: developer,

@@ -9,6 +9,10 @@ voteRouter.route('/')
   // POST a new vote cast
   .post(function (req, res, next) {
 
+    // N.B. NOW Defunct - see src/story/story.routes.js
+    // TODO: Update this method with the POST
+    // method in src/story/story.routes.js
+
     var issue = req.body.issue;
     var developer = req.body.developer;
     var vote = req.body.vote;

@@ -56,15 +56,21 @@ And I am identified by "Raphael Krausz"
 When I forget to specify the vote
 Then I should get an error back
 
-Scenario: Forgetting to specify issue to vote on
-Given I cast a vote but forget to specify the issue
-And I am identified by "Raphael Krausz"
-And I select a 1
-Then I should get an error back
+
+# POST /stories/:storyId/votes ...
+# POST/stories//votes - TODO
+
+# Scenario: Forgetting to specify issue to vote on
+# Given I cast a vote on "https://github.com/AgileVentures/AsyncVoter/issues/7"
+# And forget to specify the issue
+# And I am identified by "Raphael Krausz"
+# And I select a 1
+# Then I should get an error back
+
 
 Scenario: Forgetting to identify myself
-Given I cast a vote but forget to specify the issue
-And I forget to give my identifier
+Given I cast a vote on "https://github.com/AgileVentures/AsyncVoter/issues/7"
+And I forget give the identity of the developer
 And I select a 2
 Then I should get an error back
 

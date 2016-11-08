@@ -8,9 +8,17 @@ var assert = require('chai').assert;
 module.exports = function () {
   this.World = require('../support/world').World;
 
+
   this.Given(/^I cast a vote on "([^"]*)"$/, function (issue, callback) {
-    this.issue = issue;
-    callback();
+
+    var $this = this;
+
+    this.setupStory("Test story for cast vote feature", issue,
+      function () {
+        assert($this.response.status >= 200 && $this.response.status < 300,
+          "Setting up story - response from server was bad - " + $this.response.status);
+        callback();
+      });
   });
 
   this.Given(/^I am identified by "([^"]*)"/, function (developer, callback) {
@@ -25,14 +33,18 @@ module.exports = function () {
 
   this.Then(/^I should get a response back$/, function (callback) {
     this.getVoteResponse(function (err, res) {
-      if (err) return callback(err);
-      assert(res.status == 200, "response from server was bad - " + res.status);
+      if (err) {
+        return callback(err);
+      }
+      assert(res.status >= 200 && res.status < 300,
+        "response from server was bad - " + res.status);
       callback();
     });
   });
 
   this.Then(/^the response should include the issue being voted on$/, function (callback) {
-    assert(this.response.body.issue == this.issue, "Issue sent does not match issue returned");
+    assert(this.response.body.issue == this.storyId,
+      "Issue sent does not match issue returned");
     callback();
   });
 
@@ -61,6 +73,7 @@ module.exports = function () {
     callback();
   });
 
+
   this.Then(/^I should get an error back$/, function (callback) {
     this.getVoteResponse(function (err, res) {
       assert.isOk(err, "Error expected but not received");
@@ -68,12 +81,13 @@ module.exports = function () {
     });
   });
 
-  this.Given(/^I cast a vote but forget to specify the issue$/, function (callback) {
-    this.issue = null;
+  this.Given(/^forget to specify the issue$/, function (callback) {
+    console.log('++===+++++===  HERE')
+    this.storyId = null;
     callback();
   });
 
-  this.Given(/^I forget to give my identifier$/, function (callback) {
+  this.Given(/^I forget give the identity of the developer$/, function (callback) {
     this.developer = null;
     callback();
   });

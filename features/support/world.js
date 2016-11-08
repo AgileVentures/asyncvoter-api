@@ -19,7 +19,6 @@ module.exports.World = function (callback) {
   }
 
   // Used in cast_vote.steps.js
-  this.issue = undefined;
   this.developer = undefined;
   this.vote = undefined;
   this.notes = undefined;
@@ -28,16 +27,55 @@ module.exports.World = function (callback) {
   var $this = this;
 
   this.getVoteResponse = function (myCallback) {
+
+    // POST
+    // /stories/:Id/votes
+    // {
+    //   vote: x,
+    //   developer: y
+    // }
+    // Where x in {1, 2, 3} etc
+
+    var $this = this;
+
     var data = {
-      issue: this.issue,
       developer: this.developer,
       vote: this.vote
     };
+
     if (this.notes) data.notes = this.notes;
-    this.makeAndSendPost('/votes', data);
+
+    var postUrl = '/stories/' + this.storyId + '/votes';
+
+    console.log('postUrl: ' + postUrl);
+
+    this.makeAndSendPost(postUrl, data);
     this.send.end(function (err, res) {
       $this.response = res;
       myCallback(err, res);
+    });
+  }
+
+
+  this.storyId = undefined;
+  this.setupStory = function (name, url, myCallback) {
+    // POST
+    // name: "Our test story"
+    // size: 0
+    // url: "https://github.com/AgileVentures/AsyncVoter/issues/7"
+    // Grab the ID - res.body._id
+
+    var data = {
+      url: url,
+      size: "0",
+      name: name
+    };
+
+    this.makeAndSendPost('/stories', data);
+    this.send.end(function (err, res) {
+      $this.response = res;
+      $this.storyId = $this.response.body._id;
+      myCallback();
     });
   }
 
