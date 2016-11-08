@@ -13,7 +13,10 @@ describe('(Model) Story', function () {
   let stub;
   before(() => {
     stub = sinon.stub(Story, "find");
-  })
+  });
+  after(() => {
+    stub.restore();
+  });
 
   describe('#findBy', function () {
     describe ("filter", function() {

@@ -62,7 +62,8 @@ describe('(Router) Story', function () {
     });
     it('retrieve active story', function (done) {
       request()
-        .get('/stories?state=active')
+        .get('/stories')
+        .query({state: 'active'})
         .end(function (err, res) {
           res.should.have.status(200);
           res.body.should.be.a('array');
