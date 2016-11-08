@@ -27,7 +27,7 @@ describe('(Model) Story', function () {
             sort: (v) => {return result;} 
           };
           stub.withArgs({size: 0}).returns(result);
-          Story.findBy("state=active", undefined, done);
+          Story.findBy({state: "active"}, undefined, done);
           expect(stub.calledOnce).to.be.true;
         });
         it("found one active", function (done) {
@@ -37,7 +37,7 @@ describe('(Model) Story', function () {
             sort: (v) => {return result;} 
           };
           stub.withArgs({size: 0}).returns(result);
-          expect(Story.findBy("state=active", undefined, done)).to.be.eq(expectedResult);
+          expect(Story.findBy({state: "active"}, undefined, done)).to.be.eq(expectedResult);
           expect(stub.calledOnce).to.be.true;
         });
       });
@@ -50,7 +50,7 @@ describe('(Model) Story', function () {
             sort: (v) => {return result;} 
           };
           stub.withArgs({}).returns(result);
-          expect(Story.findBy("", "name", done)).to.be.eq([]);
+          expect(Story.findBy({}, "name", done)).to.be.eq([]);
           expect(stub.calledOnce).to.be.true;
         });
         it("found two", function (done) {
@@ -60,7 +60,7 @@ describe('(Model) Story', function () {
             sort: (v) => {return result;} 
           };
           stub.withArgs({}).returns(result);
-          expect(Story.findBy("", "name", done)).to.be.eq(expectedResult);
+          expect(Story.findBy({}, "name", done)).to.be.eq(expectedResult);
           expect(stub.calledOnce).to.be.true;
         });
         it("inverse order", function (done) {
@@ -70,7 +70,7 @@ describe('(Model) Story', function () {
             sort: (v) => {return result;} 
           };
           stub.withArgs({}).returns(result);
-          expect(Story.findBy("", "-name", done)).to.be.eq(expectedResult);
+          expect(Story.findBy({}, "-name", done)).to.be.eq(expectedResult);
           expect(stub.calledOnce).to.be.true;
         });
       });
@@ -82,7 +82,7 @@ describe('(Model) Story', function () {
             sort: (v) => {return result;} 
           };
           stub.withArgs({}).returns(result);
-          expect(Story.findBy("", "name, size", done)).to.be.eq([]);
+          expect(Story.findBy({}, "name, size", done)).to.be.eq([]);
           expect(stub.calledOnce).to.be.true;
         });
         it("found two", function (done) {
@@ -92,7 +92,7 @@ describe('(Model) Story', function () {
             sort: (v) => {return result;} 
           };
           stub.withArgs({}).returns(result);
-          expect(Story.findBy("", "name,size", done)).to.be.eq(expectedResult);
+          expect(Story.findBy({}, "name,size", done)).to.be.eq(expectedResult);
           expect(stub.calledOnce).to.be.true;
         });
         it("inverse order", function (done) {
@@ -106,7 +106,7 @@ describe('(Model) Story', function () {
             sort: (v) => {return result;} 
           };
           stub.withArgs({}).returns(result);
-          expect(Story.findBy("", "-name, size", done)).to.be.eq(expectedResult);
+          expect(Story.findBy({}, "-name, size", done)).to.be.eq(expectedResult);
           expect(stub.calledOnce).to.be.true;
         });
       });
