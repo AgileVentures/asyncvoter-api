@@ -2,7 +2,15 @@
 var Story = require('./story.model'); 
 
 exports.allStories = function (req, res) {
-    Story.findAllActive(function(err, stories) {
+    console.log("test1");
+    let sortParam = req.params["sort"];
+    console.log("test2");
+    let filterParams = req.params;
+    console.log("test3");
+    delete filterParams["sort"];
+    console.log(filterParams);
+    Story.findBy(filterParams, sortParam, function(err, stories) {
+        console.log("pirror" + err);
         res.send(stories);
     })
 }
