@@ -86,4 +86,9 @@ module.exports = function() {
     expect(this.lastResponse.length).to.equal(parseInt(numberOfStories));
     callback();
   });
+
+  this.Then(/^I should get no stories$/, function(callback) {
+    expect(this.lastResponse.length).to.equal(parseInt(0));
+    callback();
+  });
 };

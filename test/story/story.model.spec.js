@@ -68,7 +68,7 @@ describe('(Model) Story', function () {
             exec: (func) => func(expectedResult),
             sort: (v) => {return result;} 
           };
-          stub.withArgs({state: 'voted'}).returns(result);
+          stub.withArgs({}).returns(result);
           Story.findBy({state: "voted"}, function (response) {
             expect(response).to.be.eql(expectedResult);
             expect(stub.calledOnce).to.be.true;
@@ -81,7 +81,7 @@ describe('(Model) Story', function () {
             exec: (func) => func(expectedResult),
             sort: (v) => {return result;} 
           };
-          stub.withArgs({state: 'voted'}).returns(result);
+          stub.withArgs({}).returns(result);
           Story.findBy({state: "voted"}, function (response) {
             expect(response).to.be.eql(expectedResult);
             expect(stub.calledOnce).to.be.true;
