@@ -20,14 +20,14 @@ describe('(Model) Story', function () {
 
   describe('#findBy', function () {
     describe ("filter", function() {
-      describe("by State", function () {
+      describe("by size", function () {
         it("nothing found", function (done) {
           let result = {
             exec: (func) => func(undefined, []),
             sort: (v) => {return result;} 
           };
           stub.withArgs({size: 0}).returns(result);
-          Story.findBy({state: "active"}, done);
+          Story.findBy({size: "0"}, done);
           expect(stub.calledOnce).to.be.true;
         });
         it("found one active", function (done) {
@@ -37,7 +37,7 @@ describe('(Model) Story', function () {
             sort: (v) => {return result;} 
           };
           stub.withArgs({size: 0}).returns(result);
-          expect(Story.findBy({state: "active"}, done)).to.be.eq(expectedResult);
+          expect(Story.findBy({size: "0"}, done)).to.be.eq(expectedResult);
           expect(stub.calledOnce).to.be.true;
         });
       });

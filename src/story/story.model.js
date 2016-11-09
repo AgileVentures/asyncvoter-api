@@ -8,14 +8,11 @@ var schema = new mongoose.Schema({
     timestamps: true
 });
 
-schema.statics.findAllActive = function(cb) {
-  return this.model('Story').find({size: 0}).sort('name').exec(cb);
-};
 schema.statics.findBy = function(filter, callback) {
 	let filterObject = {};
 	for(let key in filter) {
-			if(key === 'state') {
-				filterObject['size'] = 0;
+			if(key === 'size') {
+				filterObject['size'] = parseInt(filter[key]);
 			}
 	}
 	return this.model('Story').find(filterObject).sort('name').exec(callback);

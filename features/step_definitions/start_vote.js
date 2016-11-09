@@ -68,7 +68,7 @@ module.exports = function() {
   });
   
   this.Given(/^I retrieve the stories that are currently being voted$/, function(callback) {
-    this.makeGetRequest('/stories?state=active').end((err, res) => {
+    this.makeGetRequest('/stories?size=0').end((err, res) => {
       expect(res.status).to.equal(200);
       this.lastResponse = res.body;
       callback();
@@ -84,6 +84,11 @@ module.exports = function() {
 
   this.Then(/^I should get (\d+) stor(?:y|ies)$/, function(numberOfStories, callback) {
     expect(this.lastResponse.length).to.equal(parseInt(numberOfStories));
+    callback();
+  });
+
+  this.Then(/^I should get no stories$/, function(callback) {
+    expect(this.lastResponse.length).to.equal(parseInt(0));
     callback();
   });
 };
