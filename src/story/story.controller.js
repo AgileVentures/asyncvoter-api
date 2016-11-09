@@ -2,7 +2,7 @@
 var Story = require('./story.model'); 
 
 exports.allStories = function (req, res) {
-    Story.find({}, function(err, stories) {
+    Story.findBy(req.query, function(err, stories) {
         res.send(stories);
     })
 }
