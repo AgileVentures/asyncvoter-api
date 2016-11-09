@@ -11,18 +11,7 @@ var schema = new mongoose.Schema({
 schema.statics.findAllActive = function(cb) {
   return this.model('Story').find({size: 0}).sort('name').exec(cb);
 };
-schema.statics.findBy = function(filter, sort, callback) {
-	sortArray = [];
-	if(sort !== undefined) {
-		sort.split(',').forEach((sortOrder) => {
-			let sortOrderTrimmed = sortOrder.trim();
-			if(sortOrderTrimmed[0] === '-') {
-				sortArray.push([sortOrderTrimmed.substr(1, sortOrderTrimmed.length - 1), -1]);
-			} else {
-				sortArray.push(sortOrderTrimmed)
-			}
-		});
-	}
+schema.statics.findBy = function(filter, callback) {
 	let filterObject = {};
 	for(let key in filter) {
 			if(key === 'state') {
