@@ -11,8 +11,10 @@ var schema = new mongoose.Schema({
 schema.statics.findBy = function(filter, callback) {
 	let filterObject = {};
 	for(let key in filter) {
-			if(key === 'state') {
+			if(key === 'state' && filter[key] === 'active') {
 				filterObject['size'] = 0;
+			} else {
+				filterObject[key] = filter[key];
 			}
 	}
 	return this.model('Story').find(filterObject).sort('name').exec(callback);
