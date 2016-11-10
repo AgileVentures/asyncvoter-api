@@ -11,21 +11,11 @@ Scenario: Casting a 1
 Given I cast a vote on "https://github.com/AgileVentures/AsyncVoter/issues/7"
 When I select a 1
 Then I should get a response back
-And the response should include the issue being voted on
+And the response should include the story being voted on
 And that 1 was selected
-
-
-Scenario: Casting a 3
-Given I cast a vote on "https://github.com/AgileVentures/AsyncVoter/issues/7"
-When I select a 3
-Then I should get a response back
-And the response should include the issue being voted on
-And that 3 was selected
 
 
 Scenario: Forgetting to specify vote option
 Given I cast a vote on "https://github.com/AgileVentures/AsyncVoter/issues/7"
-When I forget to specify the vote
+When I forget to specify the size
 Then I should get an error back
-
-

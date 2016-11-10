@@ -19,11 +19,9 @@ module.exports.World = function (callback) {
   }
 
   // Used in cast_vote.steps.js
-  this.developer = undefined;
-  this.vote = undefined;
-  this.notes = undefined;
+  this.size = undefined;
   this.response = undefined;
-  this.notes = undefined;
+
   var $this = this;
 
   this.getVoteResponse = function (myCallback) {
@@ -31,25 +29,22 @@ module.exports.World = function (callback) {
     // POST
     // /stories/:Id/votes
     // {
-    //   vote: x,
-    //   developer: y
+    //   size: x
     // }
     // Where x in {1, 2, 3} etc
 
     var $this = this;
 
     var data = {
-      developer: this.developer,
-      vote: this.vote
+      size: this.size
     };
 
     if (this.notes) data.notes = this.notes;
 
     var postUrl = '/stories/' + this.storyId + '/votes';
 
-    console.log('postUrl: ' + postUrl);
-
     this.makeAndSendPost(postUrl, data);
+
     this.send.end(function (err, res) {
       $this.response = res;
       myCallback(err, res);

@@ -27,35 +27,24 @@ router.route('/:storyId/votes')
   // TODO: Handle this here, or pass to the votes router??????
   .post(function (req, res, next) {
 
-    var issue = req.params.storyId;
+    var storyId = req.params.storyId;
+    var size = req.body.size;
 
-    var developer = req.body.developer;
-    var vote = req.body.vote;
-    var notes = req.body.notes;
-
-
-    if (!issue) {
-      console.log('The issue is missing');
-      var err = new Error("issue missing");
+    if (!storyId) {
+      console.log('The story I is missing');
+      var err = new Error("story id missing");
       err.status = 412;
       return next(err);
     }
 
-    if (!developer) {
-      console.log('The developer is missing');
-      var err = new Error("developer missing");
+    if (!size) {
+      console.log('The size is missing');
+      var err = new Error("size missing");
       err.status = 412;
       return next(err);
     }
 
-    if (!vote) {
-      console.log('The vote is missing');
-      var err = new Error("vote missing");
-      err.status = 412;
-      return next(err);
-    }
-
-    voteController.castVote(issue, developer, vote, notes,
+    voteController.castVote(storyId, size,
       function (err, theVote) {
         // TODO: Error handling code
         if (err)

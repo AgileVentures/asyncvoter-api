@@ -4,12 +4,10 @@
 var Vote = require('./vote.model');
 
 // Casts a vote
-exports.castVote = function (issue, developer, vote, notes, callback) {
+exports.castVote = function (storyId, size, callback) {
   Vote.create({
-    issue: issue,
-    developer: developer,
-    vote: vote,
-    notes: notes
+    story: storyId,
+    size: size
   }, function (err, theVote) {
     callback(err, theVote);
   });
