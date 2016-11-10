@@ -4,6 +4,7 @@ var Story = require(process.cwd() + '/src/story/story.model');
 var helperFile = require('../helper');
 let request = helperFile.request;
 let cleanDatabase = helperFile.cleanDatabase;
+let expect = require('chai').expect
 
 describe('(Router) Story', function () {
   beforeEach(function (done) {
@@ -36,15 +37,41 @@ describe('(Router) Story', function () {
       });
   });
 
-  it('GET /stories', function (done) {
-    request()
-      .get('/stories')
-      .end(function (err, res) {
-        res.should.have.status(200);
-        res.body.should.be.a('array');
-        res.body.length.should.be.eql(1);
-        done()
-      });
+  describe('GET /stories', function() {
+    beforeEach(function(done) {
+      Story.create({
+          url: "http://google.com/url1",
+          size: "0",
+          name: "test"
+        },
+        function (err, story) {
+          if (err) throw err;
+          done();
+        }
+      );
+    });
+    it('retrieve all stories', function (done) {
+      request()
+        .get('/stories')
+        .end(function (err, res) {
+          res.should.have.status(200);
+          res.body.should.be.a('array');
+          res.body.length.should.be.eql(2);
+          done()
+        });
+    });
+    it('retrieve active story', function (done) {
+      request()
+        .get('/stories/')
+        .query({state: 'active'})
+        .end(function (err, res) {
+          res.should.have.status(200);
+          res.body.should.be.a('array');
+          res.body.length.should.be.eq(1);
+          expect(res.body[0].name).to.be.eq("test");
+          done()
+        });
+    });
   });
 
   it('GET /stories/:id', function (done) {
