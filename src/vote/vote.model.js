@@ -3,19 +3,15 @@
 
 var mongoose = require('mongoose');
 var voteSchema = new mongoose.Schema({
-  issue: {
-    type: String,
+  story: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Story',
     required: true
   },
-  developer: {
+  size: {
     type: String,
     required: true
-  },
-  vote: {
-    type: String,
-    required: true
-  },
-  notes: String
+  }
 });
 
 var Vote = mongoose.model('Vote', voteSchema);
