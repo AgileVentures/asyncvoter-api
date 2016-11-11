@@ -6,7 +6,7 @@ Feature: Cast vote
 
   Scenario: Casting a 1
     Given I cast a vote on "https://github.com/AgileVentures/AsyncVoter/issues/7"
-    When I select a 1
+    When I select the size 1
     Then I should get a response back
       And the response should include the story being voted on
       And that 1 was selected

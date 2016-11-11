@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 
 var controller = require('./story.controller');
+var voteController = require('../vote/vote.controller')
 
 //Middle ware that is specific to this router
 router.use(function timeLog(req, res, next) {
@@ -20,10 +21,10 @@ router.route('/:id')
   // GET a specific story
   .get(controller.findById)
 
-// TODO: Please move to the votes controller/routing files ?
-var voteController = require('../vote/vote.controller')
+
+// TODO: Handle this here, or pass to the votes router??????
 router.route('/:storyId/votes')
-  // TODO: Handle this here, or pass to the votes router??????
+  // POST a specific vote
   .post(voteController.castVote)
 
 module.exports = router;
