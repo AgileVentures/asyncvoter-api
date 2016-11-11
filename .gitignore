@@ -4,4 +4,4 @@ data/*
 *.swp
 .env
 npm-debug.log
-
+mongod*
