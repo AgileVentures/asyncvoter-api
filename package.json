@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Application used to enable voting on stories in a asynchronous way",
   "main": "bin/server.js",
+  "engines" : { "node" : ">=6.0.0" },
   "scripts": {
     "test": "env NODE_ENV=test mocha -R spec test/*/*.spec.js",
     "start": "node bin/server.js",
