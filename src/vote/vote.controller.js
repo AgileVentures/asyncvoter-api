@@ -10,13 +10,13 @@ exports.castVote = function (req, res, next) {
 
   if (!storyId) {
     var err = new Error("story id missing");
-    err.status = 412;
+    err.status = 400;
     return next(err);
   }
 
   if (!size) {
     var err = new Error("size missing");
-    err.status = 412;
+    err.status = 400;
     return next(err);
   }
 
