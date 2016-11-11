@@ -13,82 +13,98 @@ let cleanDatabase = helperFile.cleanDatabase;
 
 var assert = require('chai').assert;
 
+var testStoryId
+
+
 
 // Test the casting of votes
-describe('Casting a size', function () {
-
+describe('Vote model tests', function () {
+  // runs before each test
   beforeEach(function (done) {
+    // clear out the database and populate with test story
     cleanDatabase(function () {
-      done();
+      // TODO: Use something like factory-girl (but for JS not rails)
+      // insert a dummy story to work with
+      var storyModel = require(process.cwd() + '/src/story/story.model')
+      storyModel.create({
+          name: 'Test Story',
+          size: '0',
+          url: 'https://github.com/AgileVentures/AsyncVoter/issues/7'
+        },
+        function (err, testStory) {
+          // TODO: Do we need to handle this error better?
+          if (err) throw err
+          testStoryId = testStory._id
+          done()
+        });
     });
   });
 
   // We cast a vote of size 2
   // At the end we expect to be given a vote object with the same
   // details as we said
-  it('castVote, size 2 selected - not on a real story', function (done) {
-    // This should fail - vote must be dependant on an actual story!
-    var storyId = "dummy story id - not a mongo ID!!!"
-
+  it('create a vote, size 2 selected - not on a real story', function (done) {
     Vote.create({
-      story: storyId,
+      story: "dummy story id - not a mongo ID!!!",
       size: 2
     }, function (err, theVote) {
       assert.isNotNull(err, "We should not accept bogus story ids")
       done()
     });
-
   });
 
+  it('create a vote, size 3 - no story provided', function (done) {
+    Vote.create({
+      story: null,
+      size: 3
+    }, function (err, theVote) {
+      assert.isNotNull(err, "Vote created without story specified!")
+      done()
+    });
+  });
 
-  it('castVote, size 1 selected - on a real story', function (done) {
-    // This should fail - vote must be dependant on an actual story!
-
-    let request = helperFile.request;
-
-    request()
-      .post('/stories')
-      .send({
-        url: 'https://github.com/AgileVentures/AsyncVoter/issues/4',
-        size: '3',
-        name: 'Start Vote Feature'
-      })
-      .end(function (err, res) {
-
-        var storyId = res.body._id
-        var size = 1
-
-        Vote.create({
-          story: storyId,
-          size: size
-        }, function (err, theVote) {
-
-          assert.isNull(err)
-
-          assert.isObject(theVote)
-          assert.isOk(theVote._id)
-
-          var id = theVote._id
-
-          Vote.findById(id, function (err, theVote) {
-            assert.isNull(err)
-            assert.isObject(theVote)
-            assert.isOk(theVote.story)
-            assert.isOk(theVote.size)
-            assert.equal(theVote.story, storyId,
-              "The votes story does not match")
-            assert.equal(theVote.size, size,
-              "The size size does not match")
-            done()
-          });
-
-
-        });
-
+  it('create a vote, story present but no size specified',
+    function (done) {
+      Vote.create({
+        story: testStoryId,
+        size: null
+      }, function (err, theVote) {
+        assert.isNotNull(err, "Vote created without size specified!")
+        done()
       });
+    }
+  );
 
-  });
 
+  it('create a vote, size 1 selected - on a real story',
+    function (done) {
+      Vote.create({
+        story: testStoryId,
+        size: 1
+      }, function (err, theVote) {
 
+        assert.isNull(err, "Valid vote entered, but error received")
 
+        assert.isObject(theVote,
+          "Vote created but no vote object produced")
+        assert.isOk(theVote._id,
+          "Vote created by missing Mongo ID!")
+
+        var id = theVote._id
+
+        Vote.findById(id, function (err, theVote) {
+          assert.isNull(err,
+            "Unexpected error trying to find vote")
+          assert.isObject(theVote, "Vote not an object when finding vote")
+          assert.isOk(theVote.story, "Story not present on vote")
+          assert.isOk(theVote.size, "Size note present on vote")
+          assert.equal(theVote.story, testStoryId,
+            "The votes story does not match")
+          assert.equal(theVote.size, size,
+            "The size size does not match")
+          done()
+        });
+      });
+    }
+  );
 });
