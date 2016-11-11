@@ -13,12 +13,13 @@ let cleanDatabase = helperFile.cleanDatabase;
 
 var assert = require('chai').assert;
 
-var testStoryId
-
 
 
 // Test the casting of votes
 describe('Vote model tests', function () {
+
+  var testStoryId = undefined
+
   // runs before each test
   beforeEach(function (done) {
     // clear out the database and populate with test story
@@ -78,9 +79,12 @@ describe('Vote model tests', function () {
 
   it('create a vote, size 1 selected - on a real story',
     function (done) {
+
+      var size = "1"
+
       Vote.create({
         story: testStoryId,
-        size: 1
+        size: size
       }, function (err, theVote) {
 
         assert.isNull(err, "Valid vote entered, but error received")
@@ -88,20 +92,21 @@ describe('Vote model tests', function () {
         assert.isObject(theVote,
           "Vote created but no vote object produced")
         assert.isOk(theVote._id,
-          "Vote created by missing Mongo ID!")
+          "Vote created but missing Mongo ID!")
 
         var id = theVote._id
 
         Vote.findById(id, function (err, theVote) {
           assert.isNull(err,
             "Unexpected error trying to find vote")
-          assert.isObject(theVote, "Vote not an object when finding vote")
+          assert.isObject(theVote,
+            "Vote not an object when finding vote")
           assert.isOk(theVote.story, "Story not present on vote")
-          assert.isOk(theVote.size, "Size note present on vote")
-          assert.equal(theVote.story, testStoryId,
-            "The votes story does not match")
+          assert.isOk(theVote.size, "Size not present on vote")
+          assert.equal(String(theVote.story), String(testStoryId),
+            "The vote's Story does not match the one given")
           assert.equal(theVote.size, size,
-            "The size size does not match")
+            "The vote's size does not match the one given")
           done()
         });
       });
