@@ -5,3 +5,4 @@ data/*
 .env
 npm-debug.log
 mongod*
+run_mongod.bat
