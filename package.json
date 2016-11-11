@@ -5,10 +5,10 @@
   "main": "bin/server.js",
   "engines" : { "node" : ">=6.0.0" },
   "scripts": {
-    "test": "env NODE_ENV=test mocha -R spec test/*/*.spec.js",
+    "test": "cross-env NODE_ENV=test mocha -R spec test/*/*.spec.js",
     "start": "node bin/server.js",
     "debug": "node debug bin/server.js",
-    "cucumber": "env NODE_ENV=test ./node_modules/.bin/cucumberjs"
+    "cucumber": "cross-env NODE_ENV=test ./node_modules/.bin/cucumberjs"
   },
   "repository": {
     "type": "git",
