@@ -4,16 +4,12 @@
 
 var mongoose = require('mongoose');
 
-
 var Vote = require(process.cwd() + '/src/vote/vote.model');
 
 var helperFile = require('../helper');
 let cleanDatabase = helperFile.cleanDatabase;
 
-
 var assert = require('chai').assert;
-
-
 
 // Test the casting of votes
 describe('Vote model tests', function () {
