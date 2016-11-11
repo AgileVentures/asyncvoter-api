@@ -21,7 +21,7 @@ module.exports = function () {
       });
   });
 
-  this.When(/^I select a (\d+)$/, function (size, callback) {
+  this.When(/^I select the size (\d+)$/, function (size, callback) {
     this.size = size;
     callback();
   });
