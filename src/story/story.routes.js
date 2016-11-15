@@ -20,6 +20,8 @@ router.route('/')
 router.route('/:id')
   // GET a specific story
   .get(controller.findById)
+  // PUT a size - close votes
+  .put(controller.closeVoting)
 
 
 // TODO: Handle this here, or pass to the votes router??????

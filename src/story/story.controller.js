@@ -27,5 +27,17 @@ exports.findById = function (req, res) {
     });
 }
 
+exports.closeVoting = function (req, res, next) {
+    var storyId = req.params.id;
+    var size = req.body.size;
+    
+    // TODO Check for the arguments before hitting the database?
+    
+    Story.findOneAndUpdate({ "_id": storyId }, { "size": size},
+    { upsert: false, new: true }, // options
+    function(err, story) {
+        if (err) return next(err);
+        return res.send(story);
+    });
 
-
+}
