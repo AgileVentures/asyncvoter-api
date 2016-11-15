@@ -26,4 +26,5 @@ Feature: Show votes on story
       | attribute | type     | value                                |
       | _id       | ObjectId | ObjectId("582b59d3b7c640cc093dae5f") |
       | story     | ObjectId | ObjectId("582b571cb7c640cc093dae5e") |
-      | size      | String   | 2
+      | size      | String   | 2                                    |
+    And They should all belong to same story
