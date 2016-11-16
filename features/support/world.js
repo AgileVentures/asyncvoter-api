@@ -3,6 +3,7 @@ let chaiHttp = require('chai-http');
 let server = require(process.cwd() + '/bin/server');
 chai.use(chaiHttp);
 let Story = require(process.cwd() + '/src/story/story.model');
+let Vote = require(process.cwd() + '/src/vote/vote.model');
 
 module.exports.World = function (callback) {
 
