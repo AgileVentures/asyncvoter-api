@@ -13,6 +13,15 @@ module.exports = function() {
         callback();
       }
     });
+
+    Vote.remove({}, function(err) {
+      if (err) {
+        callback(err);
+      }
+      else {
+        callback();
+      }
+    })
   });
 
 }
