@@ -5,7 +5,7 @@ var Vote = require('./vote.model');
 
 // Casts a vote
 exports.castVote = function (req, res, next) {
-
+console.log(req.params, req.body)
   var storyId = req.params.storyId;
   var size = req.body.size;
 
