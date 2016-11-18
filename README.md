@@ -9,6 +9,7 @@ For Voting on Stories and Tickets remotely and asynchronously e.g. planning poke
   * [Application](#running-the-application)
   * [Unit tests](#running-tests)
 * [Troubleshooting](#troubleshooting)
+* [Rest API](#rest-api)
 
 # Install
 In order to install this application you need first to ensure that you have NPM installed
@@ -87,3 +88,108 @@ node -v
 Top-level routing is now handled in the `src/routes.js` file. For domain-level sub-routes please use an appropriate routing file in the domain folder.
 
 Please see `src/routes.js` and `src/story/story.routes.js` for examples of how it is done.
+
+# Rest API
+
+## Stories
+
+### GET /stories
+```bash
+curl localhost:3000/stories
+```
+
+#### `200` response
+```json
+[{
+  "_id":"58288ffb96bdf8316b234782",
+   "updatedAt":"2016-11-13T16:08:27.411Z",
+   "createdAt":"2016-11-13T16:08:27.411Z",
+   "name":"document the API",
+   "size":"0",
+   "url":"https://github.com/AgileVentures/AsyncVoter/issues/69",
+   "__v":0
+}]
+```
+
+### POST /stories
+```bash
+curl -H "Content-Type: application/json" localhost:3000/stories -d '{"name": "document the API", "size": "0", "url": "https://github.com/AgileVentures/AsyncVoter/issues/69"}'
+```
+
+#### `201` response
+```json
+{
+  "__v":0,
+  "updatedAt":"2016-11-13T16:08:27.411Z",
+  "createdAt":"2016-11-13T16:08:27.411Z",
+  "name":"document the API",
+  "size":"0",
+  "url":"https://github.com/AgileVentures/AsyncVoter/issues/69",
+  "_id":"58288ffb96bdf8316b234782"
+}
+```
+
+### GET /stories/:id
+```bash
+curl localhost:3000/stories
+```
+
+#### `200` response
+```json
+{
+  "_id":"58288e666023a72ff4856fe2",
+  "updatedAt":"2016-11-13T16:01:42.527Z",
+  "createdAt":"2016-11-13T16:01:42.527Z",
+  "__v":0
+}
+```
+
+### PUT /stories/:id
+```bash
+curl -H "Content-Type: application/json" -X PUT localhost:3000/stories -d '{"size": "3"}'
+```
+
+#### `200` response
+```json
+{
+  "_id":"58288ffb96bdf8316b234782",
+  "updatedAt":"2016-11-18T07:56:57.652Z",
+  "createdAt":"2016-11-13T16:08:27.411Z",
+  "name":"document the API",
+  "size":"3",
+  "url":"https://github.com/AgileVentures/AsyncVoter/issues/69",
+  "__v":0
+}
+```
+
+## Votes
+
+### GET /stories/:id/votes
+```bash
+curl -H "Content-Type: application/json" localhost:3000/stories/58288e666023a72ff4856fe2/votes
+```
+
+#### `200` response
+```json
+{
+  "__v":0,
+  "story":"58288e666023a72ff4856fe2",
+  "size":"1",
+  "_id":"5828908096bdf8316b234783"
+}
+```
+
+### POST /stories/:id/votes
+```bash
+curl -H "Content-Type: application/json" localhost:3000/stories/58288e666023a72ff4856fe2/votes -d '{"size": "1"}'
+```
+
+#### `201` response
+```json
+{
+  "__v":0,
+  "story":"58288e666023a72ff4856fe2",
+  "size":"1",
+  "_id":"5828908096bdf8316b234783"
+}
+```
