@@ -3,6 +3,15 @@
 
 var Vote = require('./vote.model');
 
+exports.allVotes = function (req, res) {
+  var storyId = req.params.storyId;
+
+    Vote.find({'story': storyId}, function(err, votes) {
+      if (err) throw err;
+      res.send(votes);
+    })
+}
+
 // Casts a vote
 exports.castVote = function (req, res, next) {
 

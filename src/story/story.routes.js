@@ -24,6 +24,8 @@ router.route('/:id')
 
 // TODO: Handle this here, or pass to the votes router??????
 router.route('/:storyId/votes')
+  // GET all votes
+  .get(voteController.allVotes)
   // POST a specific vote
   .post(voteController.castVote)
 
