@@ -10,8 +10,8 @@
     "test": "cross-env NODE_ENV=test istanbul cover _mocha -R spec test/*/*.spec.js",
     "start": "node bin/server.js",
     "debug": "node debug bin/server.js",
-    "lint": "./node_modules/.bin/eslint src/ --color",
-    "cucumber": "cross-env NODE_ENV=test ./node_modules/.bin/cucumberjs"
+    "lint": "eslint src/ --color",
+    "cucumber": "cross-env NODE_ENV=test cucumberjs"
   },
   "repository": {
     "type": "git",

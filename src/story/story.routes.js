@@ -4,12 +4,6 @@ var router = express.Router();
 var controller = require('./story.controller');
 var voteController = require('../vote/vote.controller')
 
-//Middle ware that is specific to this router
-router.use(function timeLog(req, res, next) {
-  //console.log('Time: ', Date.now());
-  next();
-});
-
 
 router.route('/')
   // GET all stories
