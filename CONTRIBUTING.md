@@ -9,14 +9,14 @@ Using Waffle and GitHub to work out what to do next
 
 0) if there are any [open PRs](https://github.com/AgileVentures/AsyncVoter/pulls) then review them and if possible give feedback
 
-1) are there any tickets "in progress" on [waffle](https://waffle.io/AgileVentures/AsyncVoter)? If you'd like to help reach out to the assigned team member
+1) are there any tickets "in progress" on [waffle](https://waffle.io/AgileVentures/AsyncVoter)? If you'd like to help reach out to the assigned team member to see if you can help
 
 1) is there a estimated ticket in the ready column on waffle that I am interested in working on?
 1a) yes --> then start work on it, pairing or not
 
 1b) no --> find a ticket from the backlog (on waffle) that I'm interested in and start a vote (in a scrum, or async)
 
-2) throughout process rather than adding new features, elements to the existing ticket, freely make new tickets to go on to the backlog (on waffle)
+2) throughout process rather than adding new features, new elements or major refactoring to the existing ticket, freely make new tickets to go on to the backlog (on waffle)
 
 Working with Branches
 ---------------------
