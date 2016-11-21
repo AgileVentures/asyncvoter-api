@@ -8,8 +8,3 @@ Feature: Show votes on story
     Given there is a story with votes
     When the client requests a list of votes
     Then the response should be a list of votes on that story
-
-#  Scenario: Return empty list for stories with no votes
-#    Given there is a story with no votes
-#    When the client requests a list of votes
-#    Then the response should be a an empty list
