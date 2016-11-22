@@ -11,11 +11,8 @@ exports.createStory = function (req, res, next) {
     var name = req.body.name;
     var size = req.body.size;
     var url = req.body.url;
-    // console.log("Here is the request body: " + JSON.stringify(req.body))
     Story.create({"name": name, "size": size, "url": url}, function(err, story) {
-        if (err) throw err;
-        // console.log('Story created!');
-        var id = story._id;
+        if (err) return next(err);
         res.send(story);
     });
 }
