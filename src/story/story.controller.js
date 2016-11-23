@@ -11,6 +11,7 @@ exports.createStory = function (req, res, next) {
     var name = req.body.name;
     var size = req.body.size;
     var url = req.body.url;
+
     Story.create({"name": name, "size": size, "url": url}, function(err, story) {
         if (err) return next(err);
         res.send(story);
