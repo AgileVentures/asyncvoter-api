@@ -14,7 +14,6 @@ exports.allVotes = function (req, res) {
 
 // Casts a vote
 exports.castVote = function (req, res, next) {
-
   var storyId = req.params.storyId;
   var size = req.body.size;
 

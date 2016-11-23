@@ -102,4 +102,20 @@ module.exports.World = function (callback) {
       return str;
     }
   }
+  
+  // used in closing_voting
+  this.closeVoting = function(storyId, size, callback) {
+    // PUT /stories/:storyId { size: x }
+    var data = {
+      size: size
+    }
+    
+    var $this = this;
+  
+    chai.request(server).put("/stories/" + storyId).send(data)
+    .end(function (err, res) {
+      callback(err, res);
+    });
+
+  }
 }
