@@ -23,7 +23,7 @@ Feature: List all Ongoing Votes
     And I should get the first story with 'name' 'vote 1'
     And I should get the first story with 'size' '0'
     And I should get the first story with 'url' 'https://github.com/AgileVentures/AsyncVoter/issues/4'
-    
+
   Scenario: Retrieve two active votes
     Given the following votes exist:
       | name   | size | url                                                  |
