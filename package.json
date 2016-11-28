@@ -7,7 +7,7 @@
     "node": ">=6.0.0"
   },
   "scripts": {
-    "test": "cross-env NODE_ENV=test istanbul cover _mocha -R spec test/*/*.spec.js",
+    "test": "cross-env NODE_ENV=test istanbul cover _mocha -R spec test/*",
     "start": "node bin/server.js",
     "debug": "node debug bin/server.js",
     "lint": "eslint src/ --color",
