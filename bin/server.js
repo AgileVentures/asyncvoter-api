@@ -1,16 +1,18 @@
 var express = require('express');
-var cors = require('cors');
 var app = express();
-app.use(cors());
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var dotenv = require('dotenv');
-var chalk = require('chalk');
 
-app.use( bodyParser.json() );
+var cors = require('cors');
+var bodyParser = require('body-parser');
+
+app.use(cors());
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
 })); 
+
+var mongoose = require('mongoose');
+var dotenv = require('dotenv');
+var chalk = require('chalk');
 
 // Load the routing tables
 require('../src/routes')(app)
