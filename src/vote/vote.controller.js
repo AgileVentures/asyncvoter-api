@@ -3,11 +3,11 @@
 
 var Vote = require('./vote.model');
 
-exports.allVotes = function (req, res) {
+exports.allVotes = function (req, res, next) {
   var storyId = req.params.storyId;
 
     Vote.find({'story': storyId}, function(err, votes) {
-      if (err) throw err;
+      if (err) return next(err)
       res.send(votes);
     })
 }
