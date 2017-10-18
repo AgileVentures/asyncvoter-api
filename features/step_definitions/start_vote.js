@@ -24,7 +24,9 @@ module.exports = function () {
 
   this.Given(/^that I submit the URL '([^']+)'$/, function (url, callback) {
     this.makeAndSendPost('/stories', {
-      url: url
+      size: 0,
+      url: url,
+      source: 'https://agileventures.slack.com/messages/C0KK907B5/'
     });
     callback();
   });
