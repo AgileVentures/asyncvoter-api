@@ -28,11 +28,13 @@ describe('(Router) Story', function () {
       .send({
         url: 'https://github.com/AgileVentures/AsyncVoter/issues/4',
         size: '3',
-        name: 'Start Vote Feature'
+        name: 'Start Vote Feature',
+        source: 'https://agileventures.slack.com/messages/C0KK907B5/'
       })
       .end(function (err, res) {
         res.should.have.status(200);
         res.body.url.should.be.eql('https://github.com/AgileVentures/AsyncVoter/issues/4');
+        res.body.source.should.be.eql('https://agileventures.slack.com/messages/C0KK907B5/');
         done()
       });
   });
