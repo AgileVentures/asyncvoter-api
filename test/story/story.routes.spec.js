@@ -29,12 +29,14 @@ describe('(Router) Story', function () {
         url: 'https://github.com/AgileVentures/AsyncVoter/issues/4',
         size: '3',
         name: 'Start Vote Feature',
-        source: 'https://agileventures.slack.com/messages/C0KK907B5/'
+        source: 'https://agileventures.slack.com/messages/C0KK907B5/',
+        user_id: 'slack_user'
       })
       .end(function (err, res) {
         res.should.have.status(200);
         res.body.url.should.be.eql('https://github.com/AgileVentures/AsyncVoter/issues/4');
         res.body.source.should.be.eql('https://agileventures.slack.com/messages/C0KK907B5/');
+        res.body.user_id.should.be.eql('slack_user');
         done()
       });
   });

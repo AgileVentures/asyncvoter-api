@@ -3,7 +3,8 @@ var schema = new mongoose.Schema({
 	name: 'string',
 	size: 'string',
 	url: 'string',
-	source: 'string'
+	source: 'string',
+	user_id: 'string'
 },
 {
     timestamps: true
