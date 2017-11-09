@@ -26,7 +26,8 @@ module.exports = function () {
     this.makeAndSendPost('/stories', {
       size: 0,
       url: url,
-      source: 'https://agileventures.slack.com/messages/C0KK907B5/'
+      source: 'https://agileventures.slack.com/messages/C0KK907B5/',
+      userId: 'slack_user'
     });
     callback();
   });
@@ -68,7 +69,7 @@ module.exports = function () {
   this.Given(/^the following votes exist:$/, function(votes, callback) {
     this.createVotes(votes.hashes(), callback);
   });
-  
+
   this.Given(/^I retrieve the stories that are currently being voted$/, function(callback) {
     this.makeGetRequest('/stories?state=active').end((err, res) => {
       expect(res.status).to.equal(200);
@@ -77,7 +78,7 @@ module.exports = function () {
     });
   });
 
-  this.Then(/^I should get the (first|second|third|fourth) story with '([^\)]+)' '([^\)]+)'$/, 
+  this.Then(/^I should get the (first|second|third|fourth) story with '([^\)]+)' '([^\)]+)'$/,
       function(index, attrName, attrValue, callback) {
     let idx = this.strToIndex(index);
     expect(this.lastResponse[idx][attrName]).to.equal(attrValue);
