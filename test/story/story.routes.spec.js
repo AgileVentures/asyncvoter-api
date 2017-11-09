@@ -30,13 +30,13 @@ describe('(Router) Story', function () {
         size: '3',
         name: 'Start Vote Feature',
         source: 'https://agileventures.slack.com/messages/C0KK907B5/',
-        user_id: 'slack_user'
+        userId: 'slack_user'
       })
       .end(function (err, res) {
         res.should.have.status(200);
         res.body.url.should.be.eql('https://github.com/AgileVentures/AsyncVoter/issues/4');
         res.body.source.should.be.eql('https://agileventures.slack.com/messages/C0KK907B5/');
-        res.body.user_id.should.be.eql('slack_user');
+        res.body.userId.should.be.eql('slack_user');
         done()
       });
   });
@@ -46,7 +46,8 @@ describe('(Router) Story', function () {
       Story.create({
           url: "http://google.com/url1",
           size: "0",
-          name: "test"
+          name: "test",
+          userId: 'slack_user'
         },
         function (err, story) {
           if (err) throw err;
@@ -73,6 +74,7 @@ describe('(Router) Story', function () {
           res.body.should.be.a('array');
           res.body.length.should.be.eq(1);
           expect(res.body[0].name).to.be.eq("test");
+          res.body[0].userId.should.be.eql('slack_user');
           done()
         });
     });
@@ -82,7 +84,8 @@ describe('(Router) Story', function () {
     var newStory = new Story({
       url: 'https://github.com/AgileVentures/AsyncVoter/issues/5',
       size: '1',
-      name: 'Receive Vote Feature'
+      name: 'Receive Vote Feature',
+      userId: 'slack_user'
     });
     newStory.save(function (err, data) {
       request()
@@ -94,6 +97,7 @@ describe('(Router) Story', function () {
           res.body.should.have.property('url');
           res.body.should.have.property('size');
           res.body.should.have.property('_id').eql(res.body._id);
+          res.body.userId.should.be.eql('slack_user');
           done();
         });
     });

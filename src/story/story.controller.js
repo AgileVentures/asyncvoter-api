@@ -12,9 +12,9 @@ exports.createStory = function (req, res, next) {
     var size = req.body.size;
     var url = req.body.url;
     var source = req.body.source;
-    var user_id = req.body.user_id;
+    var userId = req.body.userId;
 
-    Story.create({"name": name, "size": size, "url": url, "source": source, "user_id": user_id}, function(err, story) {
+    Story.create({"name": name, "size": size, "url": url, "source": source, "userId": userId}, function(err, story) {
         if (err) return next(err);
         res.send(story);
     });

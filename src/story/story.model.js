@@ -4,7 +4,7 @@ var schema = new mongoose.Schema({
 	size: 'string',
 	url: 'string',
 	source: 'string',
-	user_id: 'string'
+	userId: 'string'
 },
 {
     timestamps: true
