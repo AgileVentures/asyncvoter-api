@@ -11,7 +11,8 @@ var voteSchema = new mongoose.Schema({
   size: {
     type: String,
     required: true
-  }
+  },
+  userId: String
 });
 
 var Vote = mongoose.model('Vote', voteSchema);

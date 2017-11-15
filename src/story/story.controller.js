@@ -1,5 +1,5 @@
 "use strict";
-var Story = require('./story.model'); 
+var Story = require('./story.model');
 
 exports.allStories = function (req, res) {
     Story.findBy(req.query, function(err, stories) {
@@ -11,8 +11,10 @@ exports.createStory = function (req, res, next) {
     var name = req.body.name;
     var size = req.body.size;
     var url = req.body.url;
+    var source = req.body.source;
+    var userId = req.body.userId;
 
-    Story.create({"name": name, "size": size, "url": url}, function(err, story) {
+    Story.create({"name": name, "size": size, "url": url, "source": source, "userId": userId}, function(err, story) {
         if (err) return next(err);
         res.send(story);
     });
@@ -28,9 +30,9 @@ exports.findById = function (req, res) {
 exports.closeVoting = function (req, res, next) {
     var storyId = req.params.id;
     var size = req.body.size;
-    
+
     // TODO Check for the arguments before hitting the database?
-    
+
     Story.findOneAndUpdate({ "_id": storyId }, { "size": size},
     { upsert: false, new: true }, // options
     function(err, story) {

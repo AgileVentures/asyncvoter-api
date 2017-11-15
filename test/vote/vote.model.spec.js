@@ -26,7 +26,8 @@ describe('Vote model tests', function () {
       storyModel.create({
           name: 'Test Story',
           size: '0',
-          url: 'https://github.com/AgileVentures/AsyncVoter/issues/7'
+          url: 'https://github.com/AgileVentures/AsyncVoter/issues/7',
+          userId: '@slackUser'
         },
         function (err, testStory) {
           // TODO: Do we need to handle this error better?
@@ -43,7 +44,8 @@ describe('Vote model tests', function () {
   it('create a vote, size 2 selected - not on a real story', function (done) {
     Vote.create({
       story: "dummy story id - not a mongo ID!!!",
-      size: 2
+      size: 2,
+      userId: '@aSlackUser1'
     }, function (err, theVote) {
       assert.isNotNull(err, "We should not accept bogus story ids")
       done()
@@ -53,7 +55,8 @@ describe('Vote model tests', function () {
   it('create a vote, size 3 - no story provided', function (done) {
     Vote.create({
       story: null,
-      size: 3
+      size: 3,
+      userId: '@aSlackUser2'
     }, function (err, theVote) {
       assert.isNotNull(err, "Vote created without story specified!")
       done()
@@ -64,7 +67,8 @@ describe('Vote model tests', function () {
     function (done) {
       Vote.create({
         story: testStoryId,
-        size: null
+        size: null,
+        userId: '@aSlackUser3'
       }, function (err, theVote) {
         assert.isNotNull(err, "Vote created without size specified!")
         done()
@@ -80,7 +84,8 @@ describe('Vote model tests', function () {
 
       Vote.create({
         story: testStoryId,
-        size: size
+        size: size,
+        userId: '@aSlackUser4'
       }, function (err, theVote) {
 
         assert.isNull(err, "Valid vote entered, but error received")
@@ -103,6 +108,8 @@ describe('Vote model tests', function () {
             "The vote's Story does not match the one given")
           assert.equal(theVote.size, size,
             "The vote's size does not match the one given")
+          assert.equal(theVote.userId, '@aSlackUser4',
+            "The vote's userId does not match the one given")
           done()
         });
       });
