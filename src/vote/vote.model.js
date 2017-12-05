@@ -13,6 +13,8 @@ var voteSchema = new mongoose.Schema({
     required: true
   },
   userId: String
+},{
+    timestamps: true
 });
 
 var Vote = mongoose.model('Vote', voteSchema);
