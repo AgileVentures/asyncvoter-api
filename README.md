@@ -4,6 +4,7 @@ For Voting on Stories and Tickets remotely and asynchronously e.g. planning poke
 
 # Table of content
 * [Install](#install)
+* [Deploy](#deploy)
 * [Configure](#configure-the-application)
 * Run
   * [Application](#running-the-application)
@@ -26,6 +27,34 @@ npm install
 ```
 
 At this point we have all the dependencies installed and we are ready to start
+
+# Deploy
+
+We currently deploy the app via dokku.  We can create an app on dokku like so:
+
+```
+$ dokku create:app asyncvoter-api-test
+```
+
+Then we need a mongo db:
+
+```
+$ dokku mongo:create asyncvoter-api-test
+```
+
+which we must link to the app like so:
+
+```
+$ dokku mongo:link asyncvoter-api-test asyncvoter-api-test
+```
+
+and we also need to ensure that the `MONGODB` environment variable is set as well, i.e. 
+
+```
+$ dokku config:set asyncvoter-api-test mongodb://asyncvoter-api-test......etc.
+```
+and then it should all work :tada:
+
 
 # Configure the application
 
