@@ -85,6 +85,14 @@ module.exports = function () {
     callback();
   });
 
+  this.Then(/^I should get the (first|second|third|fourth) story with revealed set to false$/,
+      function(index, callback) {
+          let idx = this.strToIndex(index);
+          expect(this.lastResponse[idx]['revealed']).to.equal(false);
+          callback();
+      });
+
+
   this.Then(/^I should get (\d+) stor(?:y|ies)$/, function(numberOfStories, callback) {
     expect(this.lastResponse.length).to.equal(parseInt(numberOfStories));
     callback();

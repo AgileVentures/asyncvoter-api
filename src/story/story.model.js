@@ -4,7 +4,8 @@ var schema = new mongoose.Schema({
 	size: 'string',
 	url: 'string',
 	source: 'string',
-	userId: 'string'
+	userId: 'string',
+	revealed: 'Boolean'
 },
 {
     timestamps: true

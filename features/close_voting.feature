@@ -7,3 +7,4 @@ Scenario: Closing with a 2
   Given there is a story with name "test me" and URL of "https://github.com/AgileVentures/AsyncVoter/issues/8"
   When I send the story a size of 2
   Then I should get the story back with size 2
+  And I should get the story back with revealed set to true

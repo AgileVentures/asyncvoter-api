@@ -45,4 +45,11 @@ module.exports = function () {
         "Size of story in response is not what was sent - responseSize: " + responseSize + ", expected size: " + size);
         callback();
     });
+
+    this.Then(/^I should get the story back with revealed set to true$/, function (callback) {
+        var responseRevealed = this.response.body.revealed;
+        assert.equal(responseRevealed, false,
+            "Revealed in story was set to: " + responseRevealed + ", expected: true ");
+        callback();
+    });
 }

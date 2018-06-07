@@ -13,8 +13,9 @@ exports.createStory = function (req, res, next) {
     var url = req.body.url;
     var source = req.body.source;
     var userId = req.body.userId;
+    var revealed = false;
 
-    Story.create({"name": name, "size": size, "url": url, "source": source, "userId": userId}, function(err, story) {
+    Story.create({"name": name, "size": size, "url": url, "source": source, "userId": userId, "revealed": revealed}, function(err, story) {
         if (err) return next(err);
         res.send(story);
     });
