@@ -37,7 +37,7 @@ describe('(Model) Story', function () {
           });
         });
         it("found one active", function (done) {
-          let expectedResult = [new Story({name: 'story1', size: 0})];
+          let expectedResult = [new Story({name: 'story1', size: 0, revealed: false})];
           let result = {
             exec: (func) => func(expectedResult),
             sort: (v) => {return result;} 

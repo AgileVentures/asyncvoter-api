@@ -48,7 +48,7 @@ module.exports = function () {
 
     this.Then(/^I should get the story back with revealed set to true$/, function (callback) {
         var responseRevealed = this.response.body.revealed;
-        assert.equal(responseRevealed, false,
+        assert.equal(responseRevealed, true,
             "Revealed in story was set to: " + responseRevealed + ", expected: true ");
         callback();
     });

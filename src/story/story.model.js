@@ -5,7 +5,7 @@ var schema = new mongoose.Schema({
 	url: 'string',
 	source: 'string',
 	userId: 'string',
-	revealed: 'Boolean'
+	revealed: { type: 'Boolean', default: false }
 },
 {
     timestamps: true
