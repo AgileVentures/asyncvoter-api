@@ -33,7 +33,7 @@ exports.closeVoting = function (req, res, next) {
 
     // TODO Check for the arguments before hitting the database?
 
-    Story.findOneAndUpdate({ "_id": storyId }, { "size": size},
+    Story.findOneAndUpdate({ "_id": storyId }, { "size": size, "revealed": true},
     { upsert: false, new: true }, // options
     function(err, story) {
         if (err) return next(err);

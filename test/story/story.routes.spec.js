@@ -37,6 +37,7 @@ describe('(Router) Story', function () {
         res.body.url.should.be.eql('https://github.com/AgileVentures/AsyncVoter/issues/4');
         res.body.source.should.be.eql('https://agileventures.slack.com/messages/C0KK907B5/');
         res.body.userId.should.be.eql('slack_user');
+        res.body.revealed.should.be.eql(false);
         done()
       });
   });
@@ -85,7 +86,7 @@ describe('(Router) Story', function () {
       url: 'https://github.com/AgileVentures/AsyncVoter/issues/5',
       size: '1',
       name: 'Receive Vote Feature',
-      userId: 'slack_user'
+      userId: 'slack_user',
     });
     newStory.save(function (err, data) {
       request()
@@ -95,11 +96,36 @@ describe('(Router) Story', function () {
           res.body.should.be.a('object');
           res.body.should.have.property('name');
           res.body.should.have.property('url');
-          res.body.should.have.property('size');
+          res.body.should.have.property('revealed');
           res.body.should.have.property('_id').eql(res.body._id);
           res.body.userId.should.be.eql('slack_user');
+          res.body.revealed.should.be.eql(false);
           done();
         });
     });
   });
+
+    it('PUT /stories/:id', function (done) {
+        var newStory = new Story({
+            url: 'https://github.com/AgileVentures/AsyncVoter/issues/5',
+            size: '1',
+            name: 'Receive Vote Feature',
+            userId: 'slack_user'
+        });
+        newStory.save(function (err, data) {
+            request()
+                .put('/stories/' + data._id)
+                .end(function (err, res) {
+                    res.should.have.status(200);
+                    res.body.should.be.a('object');
+                    res.body.should.have.property('name');
+                    res.body.should.have.property('url');
+                    res.body.should.have.property('size');
+                    res.body.should.have.property('_id').eql(res.body._id);
+                    res.body.userId.should.be.eql('slack_user');
+                    res.body.revealed.should.be.eql(true);
+                    done();
+                });
+        });
+    });
 });

@@ -11,6 +11,7 @@ Feature: Start Ballot
     And I should get the first story with 'url' 'https://github.com/AgileVentures/AsyncVoter/issues/4'
     And I should get the first story with 'source' 'https://agileventures.slack.com/messages/C0KK907B5/'
     And I should get the first story with 'userId' 'slack_user'
+    And I should get the first story with revealed set to false
 
   # Scenario: 5-option-ballet
 
